@@ -26,7 +26,7 @@
                 <div class="pl-6 pr-3 border-r-2 border-gray-400">
                   <select name="property_type" id="property_type" class="w-28 text-2xl font-bold border-0 py-0 pl-0">
                     <option value="">Type</option>
-                    <option value="apartments">Apartments</option>
+                    <option value="apartment">Apartment</option>
                     <option value="land">Land</option>
                     <option value="villa">Villa</option>
                   </select>
@@ -207,133 +207,54 @@
           <section class="latest-properties">
             <h2 class="section-title">Last added property</h2>
             <div class="section-content flex -mx-2">
-              <div class="flex-1 px-2">
-                <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
-                  <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
-                  style="background-image: url('{{ asset('assets/img/bg/sample-img.jpg') }}')"></div>
 
-                  <div class="box-content text-left p-4">
-                    <h3 class="text-2xl font-base-1 font-medium mb-3">
-                      Studio Apartment For Sale in Al Khail Heights
-                    </h3>
-                    <div class="text-3xl font-bold uppercase mb-5">
-                      aed <span class="ml-1">490,000</span>
-                    </div>
-                    <div class="item-meta mb-2">
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        7 Bathrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        5 Bedrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        15,000
-                        <span>ft<sup class="align-middle">2</sup></span>
-                      </span>
-                    </div>
-                    <a href="/" class="full-width-btn">More details</a>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="flex-1 px-2">
-                <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
-                  <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
-                  style="background-image: url('{{ asset('assets/img/bg/sample-img.jpg') }}')"></div>
+              @if ( $properties )
+                @foreach ( $properties as $property )
+                  <div class="flex-1 px-2">
+                    <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
+                      <?php 
+                        $featured_image = $property->featured_image ?? 'https://via.placeholder.com/480x380';
+                      ?>
+                      <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
+                      style="background-image: url('{{ $featured_image }}')"></div>
 
-                  <div class="box-content text-left p-4">
-                    <h3 class="text-2xl font-base-1 font-medium mb-3">
-                      Studio Apartment For Sale in Al Khail Heights
-                    </h3>
-                    <div class="text-3xl font-bold uppercase mb-5">
-                      aed <span class="ml-1">490,000</span>
-                    </div>
-                    <div class="item-meta mb-2">
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        7 Bathrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        5 Bedrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        15,000
-                        <span>ft<sup class="align-middle">2</sup></span>
-                      </span>
-                    </div>
-                    <a href="/" class="full-width-btn">More details</a>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="flex-1 px-2">
-                <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
-                  <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
-                  style="background-image: url('{{ asset('assets/img/bg/sample-img.jpg') }}')"></div>
+                      <div class="box-content text-left p-4">
+                        <h3 class="text-2xl font-base-1 font-medium mb-3">
+                          {{ $property->title }}
+                        </h3>
+                        <div class="text-3xl font-bold uppercase mb-5">
+                          aed <span class="ml-1">{{ $property->price }}</span>
+                        </div>
+                        <div class="item-meta mb-2">
+                          @if ( $property->bedrooms )
+                            <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
+                              <i class="fa fa-home mr-1"></i>
+                              {{ $property->bedrooms }} Bedrooms
+                            </span>
+                          @endif
 
-                  <div class="box-content text-left p-4">
-                    <h3 class="text-2xl font-base-1 font-medium mb-3">
-                      Studio Apartment For Sale in Al Khail Heights
-                    </h3>
-                    <div class="text-3xl font-bold uppercase mb-5">
-                      aed <span class="ml-1">490,000</span>
-                    </div>
-                    <div class="item-meta mb-2">
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        7 Bathrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        5 Bedrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        15,000
-                        <span>ft<sup class="align-middle">2</sup></span>
-                      </span>
-                    </div>
-                    <a href="/" class="full-width-btn">More details</a>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="flex-1 px-2">
-                <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
-                  <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
-                  style="background-image: url('{{ asset('assets/img/bg/sample-img.jpg') }}')"></div>
+                          @if ( $property->bathrooms )
+                            <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
+                              <i class="fa fa-home mr-1"></i>
+                              {{ $property->bathrooms }} Bathrooms
+                            </span>
+                          @endif
 
-                  <div class="box-content text-left p-4">
-                    <h3 class="text-2xl font-base-1 font-medium mb-3">
-                      Studio Apartment For Sale in Al Khail Heights
-                    </h3>
-                    <div class="text-3xl font-bold uppercase mb-5">
-                      aed <span class="ml-1">490,000</span>
+                          @if ( $property->sft )
+                            <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
+                              <i class="fa fa-home mr-1"></i>
+                              {{ $property->sft }}
+                              <span>ft<sup class="align-middle">2</sup></span>
+                            </span>
+                          @endif
+                        </div>
+                        <a href="/" class="full-width-btn">More details</a>
+                      </div>
                     </div>
-                    <div class="item-meta mb-2">
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        7 Bathrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        5 Bedrooms
-                      </span>
-                      <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                        <i class="fa fa-home mr-1"></i>
-                        15,000
-                        <span>ft<sup class="align-middle">2</sup></span>
-                      </span>
-                    </div>
-                    <a href="/" class="full-width-btn">More details</a>
                   </div>
-                </div>
-              </div>
+                @endforeach
+              @endif
+
             </div>
           </section>
         </div>

@@ -5506,9 +5506,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   "use strict";
 
   jQuery(document).ready(function ($) {
-    $('.video-play').magnificPopup({
-      type: 'video'
-    });
+    // Window scroll to certain heights
     $(window).scroll(function () {
       // Header Background-Color Change
       if ($(document).scrollTop() > 50) {
@@ -5534,6 +5532,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
           console.log("Finished animating");
         });
       });
+    }); // Embeded Video Play
+
+    $('.video-play').magnificPopup({
+      type: 'video'
     });
   });
 })(jQuery);

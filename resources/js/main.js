@@ -2,11 +2,7 @@
 	"use strict";
   
   jQuery(document).ready(function($){
-    $('.video-play').magnificPopup({
-      type: 'video'
-    });
-
-
+    // Window scroll to certain heights
     $(window).scroll(function(){
       // Header Background-Color Change
       if( $(document).scrollTop() > 50 ){
@@ -16,7 +12,6 @@
         $(".site-header .navbar").removeClass("bg-base-1");
         $(".site-header .navbar").addClass("bg-transparent");
       }
-
 
       // Mouse Scroll-To-Top
       if( $(document).scrollTop() > 300 ){
@@ -30,9 +25,14 @@
           console.log("Finished animating");
         });
       });
-
-
     });
+
+
+    // Embeded Video Play
+    $('.video-play').magnificPopup({
+      type: 'video'
+    });
+    
 
 
   });
