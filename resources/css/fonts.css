@@ -1,0 +1,33 @@
+/*
+* ===========================================================================================
+* Fonts-CSS
+* ===========================================================================================
+*/
+
+@font-face {
+  font-family: 'Studio Sans DEMO';
+  src: url('../fonts/StudioSansDEMO.woff2') format('woff2'),
+      url('../fonts/StudioSansDEMO.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Liberation Serif';
+  src: url('../fonts/LiberationSerif-Bold.woff2') format('woff2'),
+      url('../fonts/LiberationSerif-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Liberation Serif';
+  src: url('../fonts/LiberationSerif-Regular.woff2') format('woff2'),
+      url('../fonts/LiberationSerif-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+

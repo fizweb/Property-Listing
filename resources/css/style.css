@@ -1,0 +1,63 @@
+/*
+* ===========================================================================================
+* Style-CSS
+* ===========================================================================================
+*/
+
+/* body {
+  font-family: 'Studio Sans DEMO', sans-serif !important;
+} */
+
+body, a { color: #332B22; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Liberation Serif', sans-serif;
+  font-weight: bold;
+}
+
+a, i, span { display: inline-block; }
+a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
+
+.color-base-1 { color: #332B22; }
+.bg-base-1 { background-color: #332B22; }
+.border-base-1 { border-color: #332B22; }
+.rounded-tr-100 { border-top-right-radius: 100px; }
+.rounded-bl-100 { border-bottom-left-radius: 100px; }
+.text-3xl-important { font-size: 1.875rem !important;line-height: 2.25rem !important; }
+.text-26 { font-size: 26px !important;line-height: 34px !important; }
+.font-base-1 { font-family: 'Studio Sans DEMO', sans-serif; }
+
+.btn-base-1,
+.btn-base-bg-1:not(.not-hover):hover {
+  @apply bg-transparent color-base-1 text-xl border-2 border-initial rounded-xl py-2 px-5
+}
+
+.btn-base-bg-1,
+.btn-base-1:not(.not-hover):hover {
+  @apply bg-base-1 text-white text-xl border-2 border-base-1 rounded-xl py-2 px-5
+}
+
+.section-title {
+  @apply text-4xl font-bold text-center capitalize mb-14
+}
+
+.full-width-btn {
+  @apply block w-full bg-base-1 text-white text-base text-center py-3 px-4 rounded-lg
+}
+
+.shadow {
+  box-shadow: 0px 0px 12px -5px #666666;
+}
+
+.border-initial {
+  border-color: initial;
+}
+
+
+#search-form select option { font-size: 16px !important;padding-left: 20px; }
+
+
+.footer-link {
+  @apply block leading-10 text-lg
+}
+
