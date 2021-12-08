@@ -14,6 +14,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+// Database/Migration Table programmatically by using Artisan::call()
+Route::get('/migration-update', [HomeController::class, 'DatabaseTableUpdate'])->name('database-migration-update');
+Route::get('/migration-fresh', [HomeController::class, 'DatabaseTableFresh'])->name('database-migration-fresh');
+Route::get('/migration-rollback', [HomeController::class, 'DatabaseTableRollback'])->name('database-migration-rollback');
+
+
 
 Route::get('/property/single/{property}/show', [PropertyController::class, 'show'])->name('property.single.show');
 
