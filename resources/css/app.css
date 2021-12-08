@@ -25,7 +25,9 @@
 /* @import 'font-awesome'; */
 /* @import '~font-awesome'; */
 @import './font-awesome.min.css';
-@import 'magnific-popup';
+@import './slick.css';
+@import './slick-theme.css';
+@import './magnific-popup.css';
 
 
 /*

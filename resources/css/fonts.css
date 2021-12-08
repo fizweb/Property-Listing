@@ -14,6 +14,15 @@
 }
 
 @font-face {
+  font-family: 'Studio Sans Bold';
+  src: url('../fonts/StudioSans-Bold.woff2') format('woff2'),
+      url('../fonts/StudioSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Liberation Serif';
   src: url('../fonts/LiberationSerif-Bold.woff2') format('woff2'),
       url('../fonts/LiberationSerif-Bold.woff') format('woff');

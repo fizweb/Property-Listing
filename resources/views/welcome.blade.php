@@ -248,7 +248,7 @@
                             </span>
                           @endif
                         </div>
-                        <a href="/" class="full-width-btn">More details</a>
+                        <a href="{{ route('property.single.show', $property) }}" class="full-width-btn">More details</a>
                       </div>
                     </div>
                   </div>

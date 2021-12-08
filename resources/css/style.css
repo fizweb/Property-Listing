@@ -57,6 +57,78 @@ a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
 #search-form select option { font-size: 16px !important;padding-left: 20px; }
 
 
+
+/* Single Property */
+
+.inputLabel {
+  @apply block text-base mb-1;
+}
+
+.inputField {
+  @apply px-3 py-3 w-full border-0 focus:outline-none text-sm;
+}
+
+input:focus {
+  --tw-ring-color: none;
+}
+
+#description p {
+  margin-bottom: 15px;
+}
+
+
+
+/* Slick Controll */
+.single-item {
+  background-size: cover;
+  background-position: center;
+  height: 450px;
+}
+
+.thumbSlider {
+  height: 80px;
+  margin-top: 15px;
+}
+
+.thumbSlider .single-item {
+  height: 80px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.thumbSlider .single-item.slick-current {
+  opacity: 1;
+}
+
+.slick-arrow {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.slick-arrow:hover{
+  opacity: 1;
+}
+
+.slick-next.slick-arrow {
+  left: auto;
+  right: 12px;
+}
+
+
+
+/* Footer-Area */
+
 .footer-link {
   @apply block leading-10 text-lg
 }

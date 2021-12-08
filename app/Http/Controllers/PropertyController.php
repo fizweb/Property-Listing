@@ -46,7 +46,13 @@ class PropertyController extends Controller
    */
   public function show(Property $property)
   {
-    //
+    if( ! $property ){
+      return back()->with('error', 'Property not found!');
+    }
+
+    return view('property.single')->with([
+      'property' => $property,
+    ]);
   }
 
 

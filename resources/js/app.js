@@ -10,12 +10,10 @@ window.$ = window.jQuery = require('jquery');
 require('./bootstrap');
 
 import Alpine from 'alpinejs';
-
 window.Alpine = Alpine;
-
 Alpine.start();
 
-require('magnific-popup');
-// import 'magnific-popup/dist/jquery.magnific-popup';
+require('./slick.min');
+require('./magnific-popup');
 
 require('./main');

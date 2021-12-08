@@ -1,5 +1,5 @@
 <header id="Site-Header" class="site-header">
-  <div class="navbar fixed w-full flex justify-between items-center bg-transparent text-white py-5 px-10 z-50">
+  <div class="navbar {{ request()->is('/') ? 'fixed home' : 'relative bg-base-1' }} w-full flex justify-between items-center bg-transparent text-white py-5 px-10 z-50">
     <a href="/" class="left logo min-w-max">
       <img width="100" src="{{ asset('assets/img/logo/logo-white.png') }}" alt="White Logo" class="site-logo white" />
       {{-- <h2 class="font-bold text-2xl">Brand Logo</h2> --}}
