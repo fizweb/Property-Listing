@@ -20,7 +20,7 @@ Route::get('/migration-fresh', [HomeController::class, 'DatabaseTableFresh'])->n
 Route::get('/migration-rollback', [HomeController::class, 'DatabaseTableRollback'])->name('database-migration-rollback');
 Route::get('/db-seed', [HomeController::class, 'DatabaseSeed'])->name('database-seed');
 
-// Test GitHub Actions update
+
 
 Route::get('/property/single/{property}/show', [PropertyController::class, 'show'])->name('property.single.show');
 
