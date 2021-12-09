@@ -31,6 +31,7 @@ class HomeController extends Controller
     return redirect()->route('homepage')->with('success', 'Migration updated successfully!');
   }
     
+
   // Database/Migration Table Fresh by Artisan Command
   public function DatabaseTableFresh()
   {
@@ -40,6 +41,7 @@ class HomeController extends Controller
     return redirect()->route('homepage')->with('success', 'Migration successfully!');
   }
   
+
   // Database/Migration Table Rollback by Artisan Command
   public function DatabaseTableRollback()
   {
@@ -47,6 +49,16 @@ class HomeController extends Controller
     Artisan::call('migrate:rollback', []);
 
     return redirect()->route('homepage')->with('success', 'Migration rollbacked successfully!');
+  }
+  
+
+  // DB/Seed by Artisan Command
+  public function DatabaseSeed()
+  {
+    // Call Artisan Command in Controller
+    Artisan::call('db:seed', []);
+
+    return redirect()->route('homepage')->with('success', 'Dummy data inserted successfully!');
   }
 
 
