@@ -27,6 +27,8 @@ a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
 .text-26 { font-size: 26px !important;line-height: 34px !important; }
 .font-base-1 { font-family: 'Studio Sans DEMO', sans-serif; }
 
+.mt-22 { margin-top: 5.5rem; }
+
 .btn-base-1,
 .btn-base-bg-1:not(.not-hover):hover {
   @apply bg-transparent color-base-1 text-xl border-2 border-initial rounded-xl py-2 px-5

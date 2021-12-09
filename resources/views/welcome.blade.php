@@ -223,7 +223,7 @@
                           {{ $property->title }}
                         </h3>
                         <div class="text-3xl font-bold uppercase mb-5">
-                          aed <span class="ml-1">{{ $property->price }}</span>
+                          TL <span class="ml-1">{{ $property->price }}</span>
                         </div>
                         <div class="item-meta mb-2">
                           @if ( $property->bedrooms )

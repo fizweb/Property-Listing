@@ -1,6 +1,6 @@
 <x-guest-layout>
   {{-- Breadcrumbs --}}
-  <div class="shadow-md border-2 border-gray-300 py-2 bg-white">
+  <div class="bg-white shadow-md border-b-2 border-gray-300 py-2 mt-22">
     <div class="container mx-auto">
       <ul class="flex items-center">
         <li>

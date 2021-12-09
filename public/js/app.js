@@ -5460,7 +5460,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 __webpack_require__(/*! ./slick.min */ "./resources/js/slick.min.js");
 
-__webpack_require__(/*! ./magnific-popup */ "./resources/js/magnific-popup.js");
+__webpack_require__(/*! ./magnific-popup.min */ "./resources/js/magnific-popup.min.js");
 
 __webpack_require__(/*! ./main */ "./resources/js/main.js");
 
@@ -5497,10 +5497,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/magnific-popup.js":
-/*!****************************************!*\
-  !*** ./resources/js/magnific-popup.js ***!
-  \****************************************/
+/***/ "./resources/js/magnific-popup.min.js":
+/*!********************************************!*\
+  !*** ./resources/js/magnific-popup.min.js ***!
+  \********************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -6261,14 +6261,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     // Window scroll to certain heights
     $(window).scroll(function () {
       // Header Background-Color Change
-      if ($(".site-header .navbar").hasClass("home")) {
-        if ($(document).scrollTop() > 50) {
-          $(".site-header .navbar").removeClass("bg-transparent");
-          $(".site-header .navbar").addClass("bg-base-1");
-        } else {
-          $(".site-header .navbar").removeClass("bg-base-1");
-          $(".site-header .navbar").addClass("bg-transparent");
-        }
+      if ($(document).scrollTop() > 50) {
+        $(".site-header .navbar.home").removeClass("bg-transparent");
+        $(".site-header .navbar.home").addClass("bg-base-1");
+      } else {
+        $(".site-header .navbar.home").removeClass("bg-base-1");
+        $(".site-header .navbar.home").addClass("bg-transparent");
       } // Mouse Scroll-To-Top
 
 

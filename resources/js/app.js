@@ -14,6 +14,6 @@ window.Alpine = Alpine;
 Alpine.start();
 
 require('./slick.min');
-require('./magnific-popup');
+require('./magnific-popup.min');
 
 require('./main');

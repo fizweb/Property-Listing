@@ -5,14 +5,12 @@
     // Window scroll to certain heights
     $(window).scroll(function(){
       // Header Background-Color Change
-      if( $(".site-header .navbar").hasClass("home") ){
-        if( $(document).scrollTop() > 50 ){
-          $(".site-header .navbar").removeClass("bg-transparent");
-          $(".site-header .navbar").addClass("bg-base-1");
-        } else{
-          $(".site-header .navbar").removeClass("bg-base-1");
-          $(".site-header .navbar").addClass("bg-transparent");
-        }
+      if( $(document).scrollTop() > 50 ){
+        $(".site-header .navbar.home").removeClass("bg-transparent");
+        $(".site-header .navbar.home").addClass("bg-base-1");
+      } else{
+        $(".site-header .navbar.home").removeClass("bg-base-1");
+        $(".site-header .navbar.home").addClass("bg-transparent");
       }
       
 
