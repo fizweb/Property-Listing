@@ -22,7 +22,9 @@
         </li>
 
         <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-        <li>This is from dummy data.</li>
+        <li class="block text-3xl my-5">This is from dummy data.</li>
+        <li class="block text-3xl my-5">This is from dummy data 2.</li>
+        <li class="block text-3xl my-5">This is from dummy data 3.</li>
       </ul>
     </div>
   </div>
