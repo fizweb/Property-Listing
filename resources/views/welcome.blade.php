@@ -213,10 +213,10 @@
                   <div class="flex-1 px-2">
                     <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
                       <?php 
-                        $featured_image = $property->featured_image ?? 'https://via.placeholder.com/480x380';
+                        $featured_media = $property->featured_media ?? 'https://via.placeholder.com/480x380';
                       ?>
                       <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
-                      style="background-image: url('{{ $featured_image }}')"></div>
+                      style="background-image: url('{{ $featured_media }}')"></div>
 
                       <div class="box-content text-left p-4">
                         <h3 class="text-2xl font-base-1 font-medium mb-3">
@@ -240,10 +240,10 @@
                             </span>
                           @endif
 
-                          @if ( $property->sft )
+                          @if ( $property->gross_sft )
                             <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
                               <i class="fa fa-home mr-1"></i>
-                              {{ $property->sft }}
+                              {{ $property->gross_sft }}
                               <span>ft<sup class="align-middle">2</sup></span>
                             </span>
                           @endif

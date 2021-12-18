@@ -22,16 +22,23 @@ class Property extends Model
   // protected $guarded = [];
   // protected $guarded = array();
   protected $fillable = [
-    // 'name',
     'title',
-    'price',
     'dealings_type',
     'property_type',
+    'price',
+    'feature_type',
     'bedrooms',
     'bathrooms',
-    'sft',
-    'featured_image',
-    'image',
+    'net_sft',
+    'gross_sft',
+    'net_smt',
+    'gross_smt',
+    'pool',
+    'location_id',
+    'overview',
+    'why_buy',
+    'description',
+    'featured_media',
   ];
 
 
@@ -39,6 +46,23 @@ class Property extends Model
   /*protected $casts = [
     'images' => 'array',
   ];*/
+
+
+
+  /* public function featured_media()
+  {
+    return $this->belongsTo(Media::class, 'featured_media_id')->withDefault();
+  } */
+
+  public function location()
+  {
+    return $this->belongsTo(Location::class, 'location_id')->withDefault();
+  }
+
+  public function gallery()
+  {
+    return $this->hasMany(Gallery::class, 'property_id');
+  }
 
 
   

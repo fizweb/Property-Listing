@@ -15,10 +15,11 @@ class DatabaseSeeder extends Seeder
   {
     // Seeder run command
     // php artisan db:seed
-
-    // \App\Models\User::factory(10)->create();
     
-    \App\Models\Property::factory(10)->create();
+    \App\Models\Media::factory(500)->create();
+    \App\Models\Location::factory(10)->create();
+    \App\Models\Property::factory(50)->create();
+    \App\Models\Gallery::factory(500)->create();
 
   }
 

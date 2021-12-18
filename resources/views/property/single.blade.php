@@ -79,7 +79,7 @@
       {{-- Left-Sided Content --}}
       <div class="w-9/12 mx-2">
         <div id="slider" class="">
-          @include('property.slider')
+          @include('property.slider', $property->gallery)
         </div>
 
         {{-- Overview --}}
