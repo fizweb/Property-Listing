@@ -14,7 +14,7 @@ class HomeController extends Controller
     // $properties = Property::get()->all();
     // $properties = Property::orderBy('created_at', 'desc')->limit(3)->get()->all();
     // $properties = Property::orderByDesc('created_at')->limit(3)->get()->all();
-    $properties = Property::latest()->take(4)->get()->all();
+    $properties = Property::latest()->get()->take(4);
     
     return view('welcome')->with([
       'properties' => $properties,
@@ -39,6 +39,16 @@ class HomeController extends Controller
     Artisan::call('migrate:fresh', []);
 
     return redirect()->route('homepage')->with('success', 'Migration successfully!');
+  }
+    
+
+  // Database/Migration Table Fresh by Artisan Command
+  public function DatabaseTableFreshSeed()
+  {
+    // Call Artisan Command in Controller
+    Artisan::call('migrate:fresh --seed', []);
+
+    return redirect()->route('homepage')->with('success', 'Migration with dummy data successfully done!');
   }
   
 

@@ -43,9 +43,10 @@ class Property extends Model
 
 
   // Declare any field as json array
-  /*protected $casts = [
-    'images' => 'array',
-  ];*/
+  protected $casts = [
+    'why_buy'     => 'array',
+    'description' => 'array',
+  ];
 
 
 

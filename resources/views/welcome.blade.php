@@ -206,11 +206,11 @@
         <div class="block pt-28">
           <section class="latest-properties">
             <h2 class="section-title">Last added property</h2>
-            <div class="section-content flex -mx-2">
+            <div class="section-content flex flex-wrap -mx-2">
 
               @if ( $properties )
                 @foreach ( $properties as $property )
-                  <div class="flex-1 px-2">
+                  <div class="w-1/4 px-2 mb-8">
                     <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
                       <?php 
                         $featured_media = $property->featured_media ?? 'https://via.placeholder.com/480x380';
@@ -240,11 +240,11 @@
                             </span>
                           @endif
 
-                          @if ( $property->gross_sft )
+                          @if ( $property->gross_smt )
                             <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
                               <i class="fa fa-home mr-1"></i>
-                              {{ $property->gross_sft }}
-                              <span>ft<sup class="align-middle">2</sup></span>
+                              {{ $property->gross_smt }}
+                              <span>mt<sup class="align-middle">2</sup></span>
                             </span>
                           @endif
                         </div>
@@ -262,3 +262,34 @@
     </div>
   </div>
 </x-guest-layout>
+
+
+
+@section('custom-script')
+<script>
+
+  // Showing Session Error or Success Message
+  let sessionError = null, sessionSuccess = null;
+
+  @if ( session('error') )
+    sessionError = @json( session('error') );
+  @elseif ( session('success') )
+    sessionSuccess = @json( session('success') );
+  @endif
+
+  if( sessionError ){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops! Sorry.',
+      text: sessionError,
+    });
+  } else if( sessionSuccess ){
+    Swal.fire({
+      icon: 'success',
+      title: 'Thank You!',
+      text: sessionSuccess,
+    });
+  }
+
+</script>
+@endsection

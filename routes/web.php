@@ -15,10 +15,11 @@ Route::get('/dashboard', function () {
 
 
 // Database/Migration Table programmatically by using Artisan::call()
-Route::get('/migration-update', [HomeController::class, 'DatabaseTableUpdate'])->name('database-migration-update');
-Route::get('/migration-fresh', [HomeController::class, 'DatabaseTableFresh'])->name('database-migration-fresh');
-Route::get('/migration-rollback', [HomeController::class, 'DatabaseTableRollback'])->name('database-migration-rollback');
-Route::get('/db-seed', [HomeController::class, 'DatabaseSeed'])->name('database-seed');
+Route::get('/migration-update', [HomeController::class, 'DatabaseTableUpdate'])->name('database.migration.update');
+Route::get('/migration-fresh', [HomeController::class, 'DatabaseTableFresh'])->name('database.migration.fresh');
+Route::get('/migration-fresh-seed', [HomeController::class, 'DatabaseTableFreshSeed'])->name('database.migration.fresh.seed');
+Route::get('/migration-rollback', [HomeController::class, 'DatabaseTableRollback'])->name('database.migration.rollback');
+Route::get('/db-seed', [HomeController::class, 'DatabaseSeed'])->name('database.seed');
 
 
 

@@ -30,7 +30,7 @@ class PropertyFactory extends Factory
         $this->faker->sentence($nbWords = 8, $variableNbWords = true),
         $this->faker->sentence($nbWords = 7, $variableNbWords = true),
       ]), */
-      'title'          => $this->faker->sentence($nbWords = 12, $variableNbWords = true),
+      'title'          => $this->faker->sentence($nbWords = 8, $variableNbWords = false),
       'dealings_type'  => $this->faker->randomElement(['buy', 'rent']),
       'property_type'  => $this->faker->randomElement(['land', 'villa', 'apartment']),
       'price'          => $this->faker->numberBetween($min = 490000, $max = 2500000),
@@ -44,8 +44,90 @@ class PropertyFactory extends Factory
       'pool'           => $this->faker->randomElement(['public', 'private', 'no']),
       'location_id'    => Location::all()->random()->id,
       'overview'       => $this->faker->text($maxNbChars = 300),
-      'why_buy'        => $this->faker->text($maxNbChars = 1000),
-      'description'    => $this->faker->text($maxNbChars = 500),
+      'why_buy'        => [
+        $this->faker->text($maxNbChars = 60),
+        $this->faker->text($maxNbChars = 55),
+        $this->faker->text($maxNbChars = 65),
+        $this->faker->text($maxNbChars = 45),
+        $this->faker->text($maxNbChars = 50),
+        $this->faker->text($maxNbChars = 40),
+        $this->faker->text($maxNbChars = 70)
+      ],
+      'description'    => [
+        'intro'     => [
+          'title' => 'Facilities & location',
+          'text'  => [
+            $this->faker->text($maxNbChars = 400),
+          ]
+        ],
+        'sub_intro' => [
+          'title' => 'About the project and residences',
+          'text'  => [
+            $this->faker->text($maxNbChars = 400),
+            $this->faker->text($maxNbChars = 450),
+            $this->faker->text($maxNbChars = 500)
+          ]
+        ],
+        'facilities' => [
+          [
+            'title' => 'Features and facilities include',
+            'text'  => null,
+            'lists' => [
+              $this->faker->text($maxNbChars = 40),
+              $this->faker->text($maxNbChars = 30),
+              $this->faker->text($maxNbChars = 45),
+              $this->faker->text($maxNbChars = 35),
+              $this->faker->text($maxNbChars = 60),
+              $this->faker->text($maxNbChars = 50),
+              $this->faker->text($maxNbChars = 35),
+              $this->faker->text($maxNbChars = 50),
+              $this->faker->text($maxNbChars = 55),
+              $this->faker->text($maxNbChars = 40),
+            ],
+            'note'  => null
+          ],
+          [
+            'title' => 'Property prices and availability',
+            'text'  => [
+              $this->faker->text($maxNbChars = 200),
+            ],
+            'lists' => [
+              $this->faker->text($maxNbChars = 100),
+            ],
+            'note'  => 'Prices displayed exclude VAT.'
+          ],
+          [
+            'title' => 'Rental potential',
+            'text'  => [
+              $this->faker->text($maxNbChars = 250),
+            ],
+            'lists' => null,
+            'note'  => null
+          ],
+          [
+            'title' => 'Distances by land',
+            'text'  => [
+              $this->faker->text($maxNbChars = 35),
+              $this->faker->text($maxNbChars = 35),
+              $this->faker->text($maxNbChars = 35),
+            ],
+            'lists' => null,
+            'note'  => null
+          ],
+          [
+            'title' => 'Distances by sea',
+            'text'  => [
+              $this->faker->text($maxNbChars = 40),
+              $this->faker->text($maxNbChars = 40),
+              $this->faker->text($maxNbChars = 40),
+              $this->faker->text($maxNbChars = 40),
+              $this->faker->text($maxNbChars = 40),
+            ],
+            'lists' => null,
+            'note'  => null
+          ],
+        ]
+      ],
       'featured_media' => Media::all()->random()->url,
       // 'image'          => $this->faker->imageUrl(480, 380, 'nature', true, 'Featured-Image', true),
     ];

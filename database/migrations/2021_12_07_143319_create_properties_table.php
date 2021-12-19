@@ -30,7 +30,7 @@ class CreatePropertiesTable extends Migration
       $table->unsignedBigInteger('location_id');
       $table->text('overview');
       $table->text('why_buy')->nullable();
-      $table->text('description')->nullable();
+      $table->mediumText('description')->nullable();
       $table->string('featured_media')->nullable();
 
       $table->timestamps();
