@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PropertyController;
 
 
@@ -23,7 +24,12 @@ Route::get('/db-seed', [HomeController::class, 'DatabaseSeed'])->name('database.
 
 
 
+Route::get('/properties', [PropertyController::class, 'index'])->name('property.all.index');
 Route::get('/property/single/{property}/show', [PropertyController::class, 'show'])->name('property.single.show');
+
+
+
+Route::get('/page/{slug}', [PageController::class, 'single'])->name('page.single');
 
 
 

@@ -7,11 +7,17 @@
 
     <div class="w-full">
       <ul class="navbar-nav flex justify-center">
-        <li><a href="/" class="link text-white p-3">Land</a></li>
-        <li><a href="/" class="link text-white p-3">Villa</a></li>
-        <li><a href="/" class="link text-white p-3">Apartment</a></li>
-        <li><a href="/" class="link text-white p-3">About Us</a></li>
-        <li><a href="/" class="link text-white p-3">Contact Us</a></li>
+        <li>
+          <a href="{{ route('property.all.index') }}/?property_type=land" class="link text-white p-3">Land</a>
+        </li>
+        <li>
+          <a href="{{ route('property.all.index') }}/?property_type=villa" class="link text-white p-3">Villa</a>
+        </li>
+        <li>
+          <a href="{{ route('property.all.index') }}/?property_type=apartment" class="link text-white p-3">Apartment</a>
+        </li>
+        <li><a href="{{ route('page.single', 'about-us') }}" class="link text-white p-3">About Us</a></li>
+        <li><a href="{{ route('page.single', 'contact-us') }}" class="link text-white p-3">Contact Us</a></li>
       </ul>
     </div>
 

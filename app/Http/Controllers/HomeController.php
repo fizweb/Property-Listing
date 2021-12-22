@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -15,9 +16,12 @@ class HomeController extends Controller
     // $properties = Property::orderBy('created_at', 'desc')->limit(3)->get()->all();
     // $properties = Property::orderByDesc('created_at')->limit(3)->get()->all();
     $properties = Property::latest()->get()->take(4);
+
+    $locations = Location::get(['id', 'name'])->all();
     
-    return view('welcome')->with([
+    return view('welcome', [
       'properties' => $properties,
+      'locations'  => $locations,
     ]);
   }
 

@@ -11,56 +11,8 @@
 
     <div class="property-searches relative -mt-12 z-30">
       <div class="container">
-        <form method="get" action="/" id="search-form" class="">
-          <div class="grid grid-cols-5 bg-white py-5 rounded-xl shadow-lg">
-            <div class="col-span-3 px-3">
-              <div class="flex flex-wrap flex-auto">
-                <div class="pl-6 pr-3 border-r-2 border-gray-400">
-                  <select name="dealings_type" id="dealings_type" class="text-2xl font-bold border-0 py-0 pl-0">
-                    <option value="">Buy or Rent</option>
-                    <option value="buy">Buy</option>
-                    <option value="rent">Rent</option>
-                  </select>
-                </div>
-                
-                <div class="pl-6 pr-3 border-r-2 border-gray-400">
-                  <select name="property_type" id="property_type" class="w-28 text-2xl font-bold border-0 py-0 pl-0">
-                    <option value="">Type</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="land">Land</option>
-                    <option value="villa">Villa</option>
-                  </select>
-                </div>
-
-                <div class="pl-6 pr-3 border-r-2 border-gray-400">
-                  <select name="property_price" id="property_price" class="w-28 text-2xl font-bold border-0 py-0 pl-0">
-                    <option value="">Price</option>
-                    <option value="1000-1200">1,000 - 1,200</option>
-                    <option value="1200-1400">1,200 - 1,400</option>
-                    <option value="1400-1600">1,400 - 1,600</option>
-                  </select>
-                </div>
-
-                <div class="pl-6 pr-3">
-                  <select name="bedrooms" id="bedrooms" class="w-44 text-2xl font-bold border-0 py-0 pl-0">
-                    <option value="">Bedrooms</option>
-                    <option value="3+">3 and more</option>
-                    <option value="5+">5 and more</option>
-                    <option value="7+">7 and more</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-span-2 text-right px-3">
-              <div class="pr-5">
-                <input type="text" name="search_by" id="search_by" class="w-2/3 text-xl rounded-xl border-gray-500 py-3 px-5 mr-5" placeholder="Try to search for something" />
-
-                <button class="btn-base-bg-1 text-26 align-bottom py-3 px-6">Search</button>
-              </div>
-            </div>
-          </div>
-        </form>
+        <!-- Search-Form -->
+        @include('components.property.search-form', $locations)
       </div>
     </div>
 
@@ -206,56 +158,15 @@
         <div class="block pt-28">
           <section class="latest-properties">
             <h2 class="section-title">Last added property</h2>
-            <div class="section-content flex flex-wrap -mx-2">
 
-              @if ( $properties )
+            @if ( $properties )
+              <div class="section-content flex flex-wrap -mx-2">
                 @foreach ( $properties as $property )
-                  <div class="w-1/4 px-2 mb-8">
-                    <div class="bg-white shadow-md rounded-tl-lg rounded-tr-lg">
-                      <?php 
-                        $featured_media = $property->featured_media ?? 'https://via.placeholder.com/480x380';
-                      ?>
-                      <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
-                      style="background-image: url('{{ $featured_media }}')"></div>
-
-                      <div class="box-content text-left p-4">
-                        <h3 class="text-2xl font-base-1 font-medium mb-3">
-                          {{ $property->title }}
-                        </h3>
-                        <div class="text-3xl font-bold uppercase mb-5">
-                          TL <span class="ml-1">{{ $property->price }}</span>
-                        </div>
-                        <div class="item-meta mb-2">
-                          @if ( $property->bedrooms )
-                            <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                              <i class="fa fa-home mr-1"></i>
-                              {{ $property->bedrooms }} Bedrooms
-                            </span>
-                          @endif
-
-                          @if ( $property->bathrooms )
-                            <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                              <i class="fa fa-home mr-1"></i>
-                              {{ $property->bathrooms }} Bathrooms
-                            </span>
-                          @endif
-
-                          @if ( $property->gross_smt )
-                            <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-                              <i class="fa fa-home mr-1"></i>
-                              {{ $property->gross_smt }}
-                              <span>mt<sup class="align-middle">2</sup></span>
-                            </span>
-                          @endif
-                        </div>
-                        <a href="{{ route('property.single.show', $property) }}" class="full-width-btn">More details</a>
-                      </div>
-                    </div>
-                  </div>
+                  @include('components.property.single-property-card', [ $property, 'width' => 'w-1/4', ])
                 @endforeach
-              @endif
+              </div>
+            @endif
 
-            </div>
           </section>
         </div>
       </div>

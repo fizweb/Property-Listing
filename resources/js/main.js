@@ -58,7 +58,7 @@
         nextArrow: '<i class="fa fa-angle-right slick-next"></i>'
     });
     
-
+    
 
   });
 

@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
     \App\Models\Property::factory(50)->create();
     \App\Models\Gallery::factory(500)->create();
 
+
+    $this->call(PageSeeder::class);
+
+
   }
 
 
