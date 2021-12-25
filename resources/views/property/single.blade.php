@@ -26,6 +26,19 @@
     </div>
   </div>
 
+  @if (session('error'))
+    <div role="alert" class="alert-dismissible error">
+      {{ session('error') }}
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
+    </div>
+  @elseif (session('success'))
+    <div role="alert" class="alert-dismissible success">
+      {{ session('success') }}
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
+    </div>
+  @endif
+
+
   {{-- Title & Share --}}
   <div class="bg-white py-8">
     <div class="container mx-auto">
@@ -239,7 +252,7 @@
             Enquire about this property
           </h1>
 
-          <form action="#" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('property.single.inquiry', $property) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="">
@@ -247,15 +260,13 @@
                 Name
                 <span class="text-red-800 font-serif">*</span>
               </label>
-              <input class="inputField" type="text" id="name" name="name" placeholder="First Name" />
-            </div>
+              <input type="text" name="name" id="name" class="inputField @error('name') is-invalid @enderror rounded" placeholder="Name" value="{{ old('name') }}" required />
 
-            <div class="mt-5">
-              <label class="inputLabel" for="phone">
-                Phone
-                <span class="text-red-800 font-serif">*</span>
-              </label>
-              <input class="inputField" type="text" id="phone" name="phone" placeholder="Phone" />
+              @if ( $errors->has('name') )
+                <div class="alert-validation" role="alert">
+                  {{ $errors->first('name') }}
+                </div>
+              @endif
             </div>
 
             <div class="mt-5">
@@ -263,7 +274,27 @@
                 Email
                 <span class="text-red-800 font-serif">*</span>
               </label>
-              <input class="inputField" type="email" id="email" name="email" placeholder="E-mail" />
+              <input type="email" name="email" id="email" class="inputField @error('email') is-invalid @enderror rounded" placeholder="E-mail" value="{{ old('email') }}" required />
+
+              @if ( $errors->has('email') )
+                <div class="alert-validation" role="alert">
+                  {{ $errors->first('email') }}
+                </div>
+              @endif
+            </div>
+
+            <div class="mt-5">
+              <label class="inputLabel" for="phone">
+                Phone
+                <span class="text-red-800 font-serif">*</span>
+              </label>
+              <input type="text" name="phone" id="phone" class="inputField @error('phone') is-invalid @enderror rounded" placeholder="Phone" value="{{ old('phone') }}" required />
+
+              @if ( $errors->has('phone') )
+                <div class="alert-validation" role="alert">
+                  {{ $errors->first('phone') }}
+                </div>
+              @endif
             </div>
 
             <div class="mt-5">
@@ -271,13 +302,19 @@
                 Message
                 <span class="text-red-800 font-serif">*</span>
               </label>
-              <textarea class="inputField" id="message" name="message" rows="4"
-              placeholder="I'm interested in this property"></textarea>
+              <textarea name="message" id="message" class="inputField @error('message') is-invalid @enderror rounded" rows="4"
+              placeholder="I'm interested in this property" required>{{ old('message') }}</textarea>
+
+              @if ( $errors->has('message') )
+                <div class="alert-validation -mt-1" role="alert">
+                  {{ $errors->first('message') }}
+                </div>
+              @endif
             </div>
 
             <div class="mt-5">
               <button type="submit"
-              class="w-full border-2 uppercase text-center py-3 font-semibold border-red-800 hover:bg-transparent hover:text-red-800 duration-200  text-white bg-red-800 rounded-none">
+              class="w-full border-2 uppercase text-center py-3 font-semibold border-red-800 hover:bg-transparent hover:text-red-800 duration-200 text-white bg-red-800 rounded">
                 <i class="fa fa-commenting mr-2"></i>
                 Request Details
               </button>

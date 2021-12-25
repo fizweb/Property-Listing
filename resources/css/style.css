@@ -55,6 +55,32 @@ a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
   border-color: initial;
 }
 
+.color-inherit {
+  color: inherit
+}
+
+.alert-dismissible {
+  @apply relative font-medium text-lg text-center leading-none py-5 mb-5
+}
+.alert-dismissible.error {
+  @apply bg-red-200 text-red-900
+}
+.alert-dismissible.success {
+  @apply bg-green-200 text-green-900
+}
+
+.btn-close {
+  @apply absolute w-9 h-9 top-3 right-3 color-inherit text-2xl -mt-px border-2 border-solid border-initial rounded z-50
+}
+
+.alert-validation {
+  @apply text-red-600 text-sm font-bold pt-1
+}
+
+.is-invalid {
+  border: 1px solid rgb(220, 38, 38) !important;
+}
+
 
 #property-searchForm select option { font-size: 16px !important;padding-left: 20px; }
 

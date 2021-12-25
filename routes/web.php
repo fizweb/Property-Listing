@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -26,6 +27,7 @@ Route::get('/db-seed', [HomeController::class, 'DatabaseSeed'])->name('database.
 
 Route::get('/properties', [PropertyController::class, 'index'])->name('property.all.index');
 Route::get('/property/single/{property}/show', [PropertyController::class, 'show'])->name('property.single.show');
+Route::post('/property-inquiry/{property}', [ContactController::class, 'propertyInquiry'])->name('property.single.inquiry');
 
 
 

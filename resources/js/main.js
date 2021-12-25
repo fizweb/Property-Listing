@@ -29,6 +29,19 @@
     });
 
 
+    // remove alert element on click
+    $(".alert-dismissible[role='alert']").each(function(){
+      $(this).on('click', function(){
+        $(this).remove();
+      });
+    });
+    $(".btn-close[data-dismiss='alert']").each(function(){
+      $(this).on('click', function(){
+        $(this).parent().remove();
+      });
+    });
+
+
     // Embeded Video Play
     $('.video-play').magnificPopup({
       type: 'video'
