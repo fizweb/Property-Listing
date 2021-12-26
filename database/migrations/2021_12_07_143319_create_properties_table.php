@@ -20,8 +20,8 @@ class CreatePropertiesTable extends Migration
       $table->set('property_type', ['land', 'villa', 'apartment']);
       $table->unsignedInteger('price');
       $table->string('feature_type');
-      $table->unsignedTinyInteger('bedrooms')->nullable();
-      $table->unsignedTinyInteger('bathrooms')->nullable();
+      $table->unsignedSmallInteger('bedrooms')->nullable();
+      $table->unsignedSmallInteger('bathrooms')->nullable();
       $table->unsignedMediumInteger('net_sft')->nullable()->comment('Net Square-Feet');
       $table->unsignedMediumInteger('gross_sft')->nullable()->comment('Gross Square-Feet');
       $table->unsignedMediumInteger('net_smt')->nullable()->comment('Net Square-Meter');

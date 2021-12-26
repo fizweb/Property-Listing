@@ -162,7 +162,7 @@
             @if ( $properties )
               <div class="section-content flex flex-wrap -mx-2">
                 @foreach ( $properties as $property )
-                  @include('components.property.single-property-card', [ $property, 'width' => 'w-1/4', ])
+                  @include('components.property.single-property-card', [ 'property' => $property, 'width' => 'w-1/4', ])
                 @endforeach
               </div>
             @endif

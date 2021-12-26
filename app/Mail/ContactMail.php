@@ -41,7 +41,8 @@ class ContactMail extends Mailable
       'property' => $this->property
 
     ])->to($this->contact->email)
-      ->from('support@property.com');
+      ->from('info@property.com')
+      ->subject('Thanks for your interest to our property.');
 
   }
 

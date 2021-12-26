@@ -60,7 +60,7 @@ a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
 }
 
 .alert-dismissible {
-  @apply relative font-medium text-lg text-center leading-none py-5 mb-5
+  @apply relative font-medium text-lg text-center leading-none py-5 mb-5 cursor-pointer
 }
 .alert-dismissible.error {
   @apply bg-red-200 text-red-900
@@ -70,7 +70,7 @@ a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
 }
 
 .btn-close {
-  @apply absolute w-9 h-9 top-3 right-3 color-inherit text-2xl -mt-px border-2 border-solid border-initial rounded z-50
+  @apply absolute w-9 h-9 top-3 right-3 color-inherit text-2xl -mt-px border-2 border-solid border-initial rounded cursor-pointer z-50
 }
 
 .alert-validation {

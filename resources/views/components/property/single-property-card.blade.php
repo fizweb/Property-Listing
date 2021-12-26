@@ -11,32 +11,32 @@
         {{ $property->title }}
       </h3>
       <div class="text-3xl font-bold uppercase mb-5">
-        TL <span class="ml-1">{{ $property->price }}</span>
+        {{ __('USD') }} <span class="ml-1">{{ __($property->price) }}</span>
       </div>
       <div class="item-meta mb-2">
         @if ( $property->bedrooms )
           <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
             <i class="fa fa-home mr-1"></i>
-            {{ $property->bedrooms }} Bedrooms
+            {{ __($property->bedrooms) }} {{ __('Bedrooms') }}
           </span>
         @endif
 
         @if ( $property->bathrooms )
           <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
             <i class="fa fa-home mr-1"></i>
-            {{ $property->bathrooms }} Bathrooms
+            {{ __($property->bathrooms) }} {{ __('Bathrooms') }}
           </span>
         @endif
 
         @if ( $property->gross_smt )
           <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
             <i class="fa fa-home mr-1"></i>
-            {{ $property->gross_smt }}
+            {{ __($property->gross_smt) }}
             <span>mt<sup class="align-middle">2</sup></span>
           </span>
         @endif
       </div>
-      <a href="{{ route('property.single.show', $property) }}" class="full-width-btn">More details</a>
+      <a href="{{ route('property.single.show', $property) }}" class="full-width-btn">{{ __('More details') }}</a>
     </div>
   </div>
 </div>
