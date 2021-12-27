@@ -17,8 +17,37 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-          
-          Add New Property
+
+          <div class="add-property-area">
+            <form action="" method="POST" class="property-form new">
+              @csrf
+
+              <div class="flex flex-wrap justify-between items-center -mx-5">
+
+                <div class="w-2/4 px-5 mb-7">
+                  <label for="" class="input-label"><span>Title</span></label>
+                  <input type="text" name="title" class="input-field" placeholder="" value="{{ old('title') }}" />
+                </div>
+
+                <div class="w-2/4 px-5 mb-7">
+                  <label for="" class="input-label"><span>Title</span></label>
+                  <input type="text" name="title" class="input-field" placeholder="" value="" />
+                </div>
+
+                <div class="w-2/4 px-5 mb-7">
+                  <label for="" class="input-label"><span>Title</span></label>
+                  <input type="text" name="title" class="input-field" placeholder="" value="" />
+                </div>
+
+                <div class="w-2/4 px-5 mb-7">
+                  <label for="" class="input-label"><span>Title</span></label>
+                  <input type="text" name="title" class="input-field" placeholder="" value="" />
+                </div>
+
+              </div>
+
+            </form>
+          </div>
 
         </div>
       </div>
