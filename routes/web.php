@@ -41,9 +41,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'adm
   Route::get('/properties', [DashboardController::class, 'PropertiesAll'])->name('admin.property.index');
   Route::get('/property/add-new', [DashboardController::class, 'PropertyNewForm'])->name('admin.property.new');
   Route::post('/property/add-new', [DashboardController::class, 'PropertyNewStore'])->name('admin.property.new');
-  Route::get('/property/{property}/show', [DashboardController::class, 'PropertySingleShow'])->name('admin.property.show');
   Route::get('/property/{property}/edit', [DashboardController::class, 'PropertySingleEdit'])->name('admin.property.edit');
   Route::post('/property/{property}/edit', [DashboardController::class, 'PropertySingleUpdate'])->name('admin.property.edit');
+  Route::get('/property/{property}/delete', [DashboardController::class, 'PropertySingleDelete'])->name('admin.property.delete');
   
 });
 

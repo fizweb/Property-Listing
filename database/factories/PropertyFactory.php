@@ -23,28 +23,20 @@ class PropertyFactory extends Factory
   public function definition()
   {
     return [
-      // 'name'           => $this->faker->name,
-      // 'title'          => $this->faker->sentence($nbWords = 7, $variableNbWords = true), // 'Sit vitae voluptas sint non voluptates.'
-      /* 'title'          => $this->faker->randomElement([
-        $this->faker->sentence($nbWords = 6, $variableNbWords = true),
-        $this->faker->sentence($nbWords = 8, $variableNbWords = true),
-        $this->faker->sentence($nbWords = 7, $variableNbWords = true),
-      ]), */
       'title'          => $this->faker->sentence($nbWords = 8, $variableNbWords = false),
+      'price'          => $this->faker->numberBetween($min = 500000, $max = 1000000),
       'dealings_type'  => $this->faker->randomElement(['buy', 'rent']),
       'property_type'  => $this->faker->randomElement(['land', 'villa', 'apartment']),
-      'price'          => $this->faker->numberBetween($min = 500000, $max = 1000000),
-      'feature_type'   => $this->faker->randomElement(['penthouse', 'banglow', 'duplex']),
+      'main_feature'   => $this->faker->randomElement(['penthouse', 'banglow', 'duplex']),
       'bedrooms'       => $this->faker->randomElement([3, 4, null, 5, 6, null, 7, 8, null, 9]),
       'bathrooms'      => $this->faker->randomElement([2, null, 3, null, 4, null, 5]),
-      'net_sft'        => $this->faker->numberBetween($min = 1000, $max = 2200),
-      'gross_sft'      => $this->faker->numberBetween($min = 1100, $max = 2300),
-      'net_smt'        => $this->faker->numberBetween($min = 500, $max = 900),
       'gross_smt'      => $this->faker->numberBetween($min = 600, $max = 980),
+      'net_smt'        => $this->faker->numberBetween($min = 500, $max = 900),
       'pool'           => $this->faker->randomElement(['public', 'private', 'no']),
       'location_id'    => Location::all()->random()->id,
       'overview'       => $this->faker->text($maxNbChars = 300),
-      'why_buy'        => [
+      'why_buy'        => $this->faker->text($maxNbChars = 500),
+      /* 'why_buy'        => [
         $this->faker->text($maxNbChars = 60),
         $this->faker->text($maxNbChars = 55),
         $this->faker->text($maxNbChars = 65),
@@ -52,8 +44,9 @@ class PropertyFactory extends Factory
         $this->faker->text($maxNbChars = 50),
         $this->faker->text($maxNbChars = 40),
         $this->faker->text($maxNbChars = 70)
-      ],
-      'description'    => [
+      ], */
+      'description'    => $this->faker->text($maxNbChars = 2000),
+      /* 'description'    => [
         'intro'     => [
           'title' => 'Facilities & location',
           'text'  => [
@@ -127,7 +120,7 @@ class PropertyFactory extends Factory
             'note'  => null
           ],
         ]
-      ],
+      ], */
       'featured_media' => Media::all()->random()->url,
       // 'image'          => $this->faker->imageUrl(480, 380, 'nature', true, 'Featured-Image', true),
     ];

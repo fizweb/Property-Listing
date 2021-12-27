@@ -16,17 +16,15 @@ class CreatePropertiesTable extends Migration
     Schema::create('properties', function (Blueprint $table) {
       $table->id();
       $table->string('title');
+      $table->unsignedInteger('price');
       $table->set('dealings_type', ['buy', 'rent']);
       $table->set('property_type', ['land', 'villa', 'apartment']);
-      $table->unsignedInteger('price');
-      $table->string('feature_type');
+      $table->string('main_feature')->nullable(); // penthouse, banglow, duplex
       $table->unsignedSmallInteger('bedrooms')->nullable();
       $table->unsignedSmallInteger('bathrooms')->nullable();
-      $table->unsignedMediumInteger('net_sft')->nullable()->comment('Net Square-Feet');
-      $table->unsignedMediumInteger('gross_sft')->nullable()->comment('Gross Square-Feet');
-      $table->unsignedMediumInteger('net_smt')->nullable()->comment('Net Square-Meter');
-      $table->unsignedMediumInteger('gross_smt')->nullable()->comment('Gross Square-Meter');
-      $table->set('pool', ['public', 'private', 'no']);
+      $table->unsignedMediumInteger('gross_smt')->comment('Gross Square-Meter');
+      $table->unsignedMediumInteger('net_smt')->comment('Net Square-Meter');
+      $table->set('pool', ['public', 'private', 'no'])->nullable();
       $table->unsignedBigInteger('location_id');
       $table->text('overview');
       $table->text('why_buy')->nullable();

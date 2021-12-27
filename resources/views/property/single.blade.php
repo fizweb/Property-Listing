@@ -26,17 +26,20 @@
     </div>
   </div>
 
-  @if (session('error'))
-    <div role="alert" class="alert-dismissible error">
-      {{ session('error') }}
-      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
-    </div>
-  @elseif (session('success'))
-    <div role="alert" class="alert-dismissible success">
-      {{ session('success') }}
-      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
-    </div>
-  @endif
+  {{-- Session-Message --}}
+  <div class="session-message">
+    @if (session('error'))
+      <div role="alert" class="alert-dismissible error">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
+      </div>
+    @elseif (session('success'))
+      <div role="alert" class="alert-dismissible success">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><i class="fa fa-close"></i></button>
+      </div>
+    @endif
+  </div>
 
 
   {{-- Title & Share --}}
@@ -49,9 +52,9 @@
           </h2>
 
           <h3 class="text-lg mt-2">
-            Price:
+            {{ __('Price') }}:
             <span class="text-red-800">
-              TL {{ $property->price ? number_format( $property->price, 0, '.', ',' ) : '5,000,000' }}
+              {{ __('USD') }} {{ $property->price ? number_format( $property->price, 0, '.', ',' ) : '5,000,000' }}
             </span>
           </h3>
         </div>
@@ -111,11 +114,11 @@
           <div class="ml-2 w-10/12 text-base flex justify-between">
             <div class="flex-1 border-l-2 border-gray-300 ml-3 pl-3 self-center">
               <ul>
-                @if ( $property->feature_type )
+                @if ( $property->main_feature )
                   <li class="flex flex-wrap items-center text-sm my-2">
                     <i class="fa fa-home mr-2 text-red-400 w-5 text-center"></i>
                     <span class="text-sm">Type:</span>
-                    <span class="ml-2 font-bold">{{ ucwords($property->feature_type) }}</span>
+                    <span class="ml-2 font-bold">{{ ucwords($property->main_feature) }}</span>
                   </li>
                 @endif
                 
@@ -154,15 +157,18 @@
                 @if ( $property->gross_smt )
                   <li class="flex flex-wrap items-center text-sm my-2">
                     <i class="fa fa-gratipay mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Living space sqm:</span>
-                    <span class="ml-2 font-bold">{{ $property->gross_smt }}</span>
+                    <span class="text-sm">Living space:</span>
+                    <span class="ml-2 font-bold">
+                      <span>{{ $property->gross_smt }}</span>
+                      <sup>sqm</sup>
+                    </span>
                   </li>
                 @endif
                 
                 @if ( $property->pool )
                   <li class="flex flex-wrap items-center text-sm my-2">
                     <i class="fa fa-low-vision mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Pool</span>
+                    <span class="text-sm">Pool:</span>
                     <span class="ml-2 font-bold">{{ ucwords($property->pool) }}</span>
                   </li>
                 @endif
@@ -176,11 +182,13 @@
           <div class="flex justify-between items-center bg-white p-8 mt-10 shadow-sm">
             <h4 class="text-lg w-2/12">Why buy this Property</h4>
             <div class="border-l-2 border-gray-300 pl-5 ml-5 w-10/12 text-base">
-              <ul>
+              <p>{{ $property->why_buy }}</p>
+
+              {{-- <ul>
                 @foreach ( $property->why_buy as $why_buy )
                   <li>- <span class="ml-1">{{ $why_buy }}</span></li>
                 @endforeach
-              </ul>
+              </ul> --}}
             </div>
           </div>
         @endif
@@ -188,8 +196,10 @@
         {{-- Description --}}
         @if ( $property->description )
           <div class="bg-white p-8 mt-10 shadow-sm" id="description">
-            <?php $description = $property->description; ?>
             
+            <p>{{ $property->description }}</p>
+
+            {{-- <?php $description = $property->description; ?>
             @if ( $description['intro'] )
               <h2 class="font-bold uppercase mb-2">{{ $description['intro']['title'] }}</h2>
               @if ( $description['intro']['text'] )
@@ -233,7 +243,7 @@
                   @endif
                 </div>
               @endforeach
-            @endif
+            @endif --}}
             
           </div>
         @endif

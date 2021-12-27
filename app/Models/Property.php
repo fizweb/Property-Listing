@@ -23,16 +23,14 @@ class Property extends Model
   // protected $guarded = array();
   protected $fillable = [
     'title',
+    'price',
     'dealings_type',
     'property_type',
-    'price',
-    'feature_type',
+    'main_feature',
     'bedrooms',
     'bathrooms',
-    'net_sft',
-    'gross_sft',
-    'net_smt',
     'gross_smt',
+    'net_smt',
     'pool',
     'location_id',
     'overview',
@@ -43,10 +41,10 @@ class Property extends Model
 
 
   // Declare any field as json array
-  protected $casts = [
+  /* protected $casts = [
     'why_buy'     => 'array',
     'description' => 'array',
-  ];
+  ]; */
 
 
 
