@@ -1,7 +1,7 @@
 <div class="largeSlider">
   @foreach ( $property->gallery as $gallery )
     @foreach ( $gallery->medias as $media )
-      <div class="single-item" style="background-image: url('{{ $media->url }}')"></div>
+      <div class="single-item" style="background-image: url('{{ $media->storage_type == 'local' ? asset($media->url) : $media->url }}')"></div>
     @endforeach
   @endforeach
 
@@ -13,7 +13,7 @@
 <div class="thumbSlider">
   @foreach ( $property->gallery as $gallery )
     @foreach ( $gallery->medias as $media )
-      <div class="single-item" style="background-image: url('{{ $media->url }}')"></div>
+      <div class="single-item" style="background-image: url('{{ $media->storage_type == 'local' ? asset($media->url) : $media->url }}')"></div>
     @endforeach
   @endforeach
 

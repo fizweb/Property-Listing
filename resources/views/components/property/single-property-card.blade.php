@@ -3,8 +3,8 @@
     <?php 
       $featured_media = $property->featured_media ?? 'https://via.placeholder.com/480x380';
     ?>
-    <div class="bg-img h-52 bg-cover bg-center rounded-tl-lg rounded-tr-lg"
-    style="background-image: url('{{ $featured_media }}')"></div>
+    <div class="bg-img h-52 rounded-bl-none rounded-br-none"
+    style="background-image: url('{{ asset($featured_media) }}')"></div>
 
     <div class="box-content text-left p-4">
       <h3 class="text-2xl font-base-1 font-medium mb-3">

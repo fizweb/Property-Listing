@@ -14,13 +14,12 @@ class MediaFactory extends Factory
   public function definition()
   {
     return [
-      'type'          => '',
-      'original_name' => '',
-      'given_name'    => '',
+      'type'          => 'image',
+      'filename'      => '',
       'extension'     => '',
-      'res_min'       => '',
-      'res_max'       => '',
-      'location'      => '',
+      'min_res'       => '',
+      'max_res'       => '',
+      'storage_type'  => 'remote',
       // 'url'           => $this->faker->imageUrl(1200, 800, 'nature', true, '', true),
       'url'           => $this->faker->randomElement([
         'https://source.unsplash.com/random/1600×1200/?property',

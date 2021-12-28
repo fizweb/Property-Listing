@@ -16,13 +16,12 @@ class CreateMediaTable extends Migration
     Schema::create('media', function (Blueprint $table) {
       $table->id();
       $table->string('type')->nullable(); // what type of media = image - audio - video
-      $table->string('original_name')->nullable(); // media original file name
-      $table->string('given_name')->nullable(); // media given name by user
+      $table->string('filename')->nullable(); // media file name
       $table->string('extension')->nullable(); // media file extension
-      $table->string('res_min')->nullable(); // media minimum resolution
-      $table->string('res_max')->nullable(); // media maximum resolution
-      $table->string('location')->nullable(); // media saved location
-      $table->string('url')->nullable(); // media access full url
+      $table->string('min_res')->nullable(); // media minimum resolution
+      $table->string('max_res')->nullable(); // media maximum resolution
+      $table->string('storage_type')->nullable(); // local - amazon s3 - remote url
+      $table->string('url'); // media access url
 
       $table->timestamps();
     });

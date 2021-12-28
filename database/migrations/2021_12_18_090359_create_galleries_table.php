@@ -21,9 +21,9 @@ class CreateGalleriesTable extends Migration
       $table->timestamps();
 
       $table->foreign('media_id')
-        ->references('id')->on('media')->onUpdate('cascade')->onDelete('cascade');
+        ->references('id')->on('media')->onUpdate('cascade');
       $table->foreign('property_id')
-        ->references('id')->on('properties')->onUpdate('cascade')->onDelete('cascade');
+        ->references('id')->on('properties')->onUpdate('cascade');
     });
   }
 

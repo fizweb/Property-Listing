@@ -23,12 +23,11 @@ class Media extends Model
   // protected $guarded = array();
   protected $fillable = [
     'type',
-    'original_name',
-    'given_name',
+    'filename',
     'extension',
-    'res_min',
-    'res_max',
-    'location',
+    'min_res',
+    'max_res',
+    'storage_type',
     'url',
   ];
 
