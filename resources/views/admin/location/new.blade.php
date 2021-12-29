@@ -108,7 +108,7 @@
                         <i class="fa fa-pencil"></i>
                       </a>
   
-                      <a href="{{ route('admin.location.edit', $location) }}" 
+                      <a href="{{ route('admin.location.delete', $location) }}" 
                         onclick="return confirm('Are you sure to delete this location?');"
                         class="btn-red py-1 px-2 rounded-sm ml-1">
                         <i class="fa fa-trash"></i>

@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class LocationController extends Controller
 {
-  // Add New Location Form
-  public function LocationNewForm( Request $request )
+  // New Location Form
+  public function create()
   {
     $locations = Location::orderBy('name', 'asc')->get()->all();
 
@@ -21,7 +21,7 @@ class LocationController extends Controller
 
 
   // Store New Location
-  public function LocationNewStore( Request $request )
+  public function store( Request $request )
   {
     $validator = Validator::make( $request->all(), [
       'name'  => [ 'required', 'string', 'max:191' ],
@@ -43,7 +43,7 @@ class LocationController extends Controller
 
   
   // Edit Location Form
-  public function LocationSingleEdit( Location $location, Request $request )
+  public function edit( Location $location )
   {
     if( ! $location ){
       return back()->with('error', 'The location not found!');
@@ -55,8 +55,8 @@ class LocationController extends Controller
   }
 
 
-  // Store New Location
-  public function LocationSingleUpdate( Location $location, Request $request )
+  // Update Location
+  public function update( Location $location, Request $request )
   {
     if( ! $location ){
       return back()->with('error', 'The location not found!');
@@ -79,6 +79,22 @@ class LocationController extends Controller
 
     return redirect()->route('admin.location.new')
       ->with('success', "The location \"$location->name\" updated successfully!");
+  }
+
+
+  public function destroy( Location $location, Request $request )
+  {
+    if( ! $location ){
+      return back()->with('error', 'The location not found!');
+    }
+
+    foreach( $location->properties as $property ){
+      $property->update([ 'location_id' => null ]);
+    }
+
+    $location->delete();
+
+    return back()->with('success', "The location \"$location->name\" deleted successfully!");
   }
 
 

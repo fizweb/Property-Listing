@@ -17,7 +17,7 @@ class HomeController extends Controller
     // $properties = Property::orderByDesc('created_at')->limit(3)->get()->all();
     $properties = Property::latest()->get()->take(4);
 
-    $locations = Location::get(['id', 'name'])->all();
+    $locations = Location::orderBy('name', 'asc')->get(['id', 'name'])->all();
     
     return view('welcome', [
       'properties' => $properties,

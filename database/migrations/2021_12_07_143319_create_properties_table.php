@@ -25,7 +25,7 @@ class CreatePropertiesTable extends Migration
       $table->unsignedMediumInteger('gross_smt')->comment('Gross Square-Meter');
       $table->unsignedMediumInteger('net_smt')->comment('Net Square-Meter');
       $table->set('pool', ['public', 'private', 'no'])->nullable();
-      $table->unsignedBigInteger('location_id');
+      $table->unsignedBigInteger('location_id')->nullable();
       $table->text('overview');
       $table->text('why_buy')->nullable();
       $table->mediumText('description')->nullable();

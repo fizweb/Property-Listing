@@ -12,7 +12,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 // Symbolic-Link & Laravel-Storage-Link
-//Route::get('/symlink', [HomeController::class, 'CreateSymbolicLink']);
+Route::get('/symlink', [HomeController::class, 'CreateSymbolicLink']);
 Route::get('/storage-link', [HomeController::class, 'CreateStorageLink']);
 
 // Database/Migration Table programmatically by using Artisan::call()
@@ -40,7 +40,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
 
 
 
-// ADMIN ROUTES
+/** ADMIN ROUTES - ADMIN ROUTES - ADMIN ROUTES **/
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'admin'], function(){
   Route::get('/dashboard', [DashboardController::class, 'DashboardIndex'])->name('admin.dashboard');
   Route::get('/properties', [PropertyController::class, 'admin_index'])->name('admin.property.index');
@@ -53,10 +53,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'adm
   Route::get('/property/{property_id}/featured-image/delete', [PropertyController::class, 'Delete_Featured_Media'])->name('admin.property.featured-Media.delete');
   Route::get('/property/gallery/{gallery_id}/{property_id}/{media_id}/delete', [PropertyController::class, 'Delete_Property_Gallery'])->name('admin.property.gallery.delete');
   
-  Route::get('/location/add-new', [LocationController::class, 'LocationNewForm'])->name('admin.location.new');
-  Route::post('/location/add-new', [LocationController::class, 'LocationNewStore'])->name('admin.location.new');
-  Route::get('/location/{location}/edit', [LocationController::class, 'LocationSingleEdit'])->name('admin.location.edit');
-  Route::post('/location/{location}/edit', [LocationController::class, 'LocationSingleUpdate'])->name('admin.location.edit');
+  Route::get('/location/add-new', [LocationController::class, 'create'])->name('admin.location.new');
+  Route::post('/location/add-new', [LocationController::class, 'store'])->name('admin.location.new');
+  Route::get('/location/{location}/edit', [LocationController::class, 'edit'])->name('admin.location.edit');
+  Route::post('/location/{location}/edit', [LocationController::class, 'update'])->name('admin.location.edit');
+  Route::get('/location/{location}/delete', [LocationController::class, 'destroy'])->name('admin.location.delete');
 
 });
 

@@ -75,7 +75,7 @@
                   </td>
 
                   <td class="border p-2 location">
-                    {{ $property->location->name }}
+                    {{ $property->location->name ?? '- - -' }}
                   </td>
 
                   <td class="border p-2 text-center text-sm w-40 actions">

@@ -457,18 +457,15 @@ class PropertyController extends Controller
 
     if( ! empty($property->featured_media) && Storage::disk('public')->exists( $property->featured_media ) ){
       $deleteMedia = Storage::disk('public')->delete( $property->featured_media );
-
-      $property->update([ 'featured_media' => null ]);
-
-      return back()->with('success', 'The property featured-media deleted successfully!');
-
-    } else{
-      return back()->with('error', 'The property featured-media not exists!');
     }
+
+    $property->update([ 'featured_media' => null ]);
+
+    return back()->with('success', 'The property featured-media deleted successfully!');
   }
 
 
-  // Gallery-Media Detach
+  // Property-Gallery Delete
   public function Delete_Property_Gallery( $gallery_id, $property_id, $media_id )
   {
     $gallery     = Gallery::find($gallery_id);

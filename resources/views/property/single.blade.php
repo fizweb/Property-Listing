@@ -142,13 +142,11 @@
                   </li>
                 @endif
                 
-                @if ( $property->location )
-                  <li class="flex flex-wrap items-center text-sm my-2">
-                    <i class="fa fa-map-marker mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Location:</span>
-                    <span class="ml-2 font-bold">{{ ucwords($property->location->name) }}</span>
-                  </li>
-                @endif
+                <li class="flex flex-wrap items-center text-sm my-2">
+                  <i class="fa fa-map-marker mr-2 text-red-400 w-5 text-center"></i>
+                  <span class="text-sm">Location:</span>
+                  <span class="ml-2 font-bold">{{ ucwords($property->location->name) }}</span>
+                </li>
               </ul>
             </div>
 

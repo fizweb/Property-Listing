@@ -28,7 +28,7 @@
     <div class="container">
       <div class="bg-white p-6 border-b border-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
 
-        <div class="w-full -mx-5 sm:-mx-6">
+        <div class="-mx-5 sm:-mx-6">
           <div class="edit-location-area w-2/4 px-5 sm:px-6">
             <form action="{{ route('admin.location.edit', $location) }}" method="POST"
                   class="location-form edit w-full">
