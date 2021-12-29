@@ -300,13 +300,13 @@
                 {{-- Show-Featured-Media --}}
                 <div class="mb-7">
                   <?php $featured_media = $property->featured_media ? ('storage/' . $property->featured_media) : null; ?>
-                  <div style="background-image: url('{{ asset($featured_media) }}')" class="bg-img h-40 relative {{ $property->featured_media ? 'cursor-pointer' : '' }}">
+                  <div style="background-image: url('{{ asset($featured_media) }}')" class="bg-img h-40 relative {{ $property->featured_media ? 'cursor-pointer group' : '' }}">
                     @if ( $featured_media )
-                      <div class="bg-overlay"></div>
+                      <div class="bg-overlay group-hover:opacity-50 group-hover:visible"></div>
 
                       <a href="{{ route('admin.property.featured-Media.delete', $property->id) }}"
                       onclick="return confirm('Are you sure to delete featured-media?');"
-                      class="delete-featured-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded transition opacity-0 z-30">
+                      class="delete-featured-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded opacity-0 group-hover:opacity-100 group-hover:visible z-30">
                         <i class="fa fa-close"></i>
                       </a>
                     @endif
@@ -338,12 +338,12 @@
                         @foreach ( $gallery->medias as $media )
                           <div class="w-2/4 px-1 mb-2">
                             <?php $media_url = $media->url ? ('storage/' . $media->url) : null; ?>
-                            <div style="background-image: url('{{ $media->storage_type == 'local' ? asset($media_url) : $media->url }}')" class="bg-img h-20 relative {{ $media->url ? 'cursor-pointer' : '' }}">
+                            <div style="background-image: url('{{ $media->storage_type == 'local' ? asset($media_url) : $media->url }}')" class="bg-img h-20 relative {{ $media->url ? 'cursor-pointer group' : '' }}">
                               @if ( $media_url )
-                                <div class="bg-overlay"></div>
+                                <div class="bg-overlay group-hover:opacity-50 group-hover:visible"></div>
                                 <a href="{{ route('admin.property.gallery.delete', [$gallery->id, $gallery->property_id, $gallery->media_id]) }}" 
                                 onclick="return confirm('Are you sure to detach this media?');"
-                                class="detach-gallery-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded transition opacity-0 z-30">
+                                class="detach-gallery-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded opacity-0 group-hover:opacity-100 group-hover:visible z-30">
                                   <i class="fa fa-close"></i>
                                 </a>
                               @endif

@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     // php artisan db:seed --class=UserSeeder
 
     $newUser = [
-      'name'     => 'Nurullah Mohammad',
+      'name'     => 'Admin Admin',
       'email'    => 'admin@example.com',
       'password' => '12'
     ];
