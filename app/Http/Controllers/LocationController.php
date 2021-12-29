@@ -49,7 +49,9 @@ class LocationController extends Controller
       return back()->with('error', 'The location not found!');
     }
 
-    return view('admin.location.edit');
+    return view('admin.location.edit', [
+      'location' => $location,
+    ]);
   }
 
 

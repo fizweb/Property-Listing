@@ -170,7 +170,7 @@ label.required > span:before {
 .select-field-full,
 .text-field,
 .text-field-full {
-  @apply h-9 text-base leading-tight border border-gray-400 py-1.5 px-3 rounded cursor-pointer
+  @apply h-9 text-base leading-tight border border-gray-400 py-1.5 px-3 rounded
 }
 .input-label-full,
 .input-field-full,
@@ -179,18 +179,22 @@ label.required > span:before {
   @apply w-full block
 }
 
-input::placeholder,
-textarea::placeholder {
-  @apply text-gray-400 opacity-100
-}
-
 .is-invalid {
   border: 1px solid #DC3545 !important;
 }
 
-form select {
-  min-width: 150px;
+select,
+input[type="file"] {
   @apply cursor-pointer
+}
+
+select {
+  min-width: 150px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  @apply text-gray-400 opacity-100
 }
 
 textarea.text-field,

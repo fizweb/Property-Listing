@@ -74,9 +74,50 @@
 
           {{-- All-Locations-Index --}}
           <div class="w-2/4 px-5 sm:px-6">
-            <div class="locations-area">
-
+            <div class="text-xl font-bold mb-3">
+              Locations Index
             </div>
+
+            <table class="locations-table table-auto w-full">
+              <thead class="table-header">
+                <tr class="align-middle text-center bg-gray-800 text-white">
+                  <th class="border p-2 font-normal serial">#</th>
+                  <th class="border p-2 font-normal name">Name</th>
+                  <th class="border p-2 font-normal city">City</th>
+                  <th class="border p-2 font-normal w-40 actions">- - -</th>
+                </tr>
+              </thead>
+
+              <tbody class="table-body">
+                @foreach ( $locations as $index => $location )
+                  <tr class="align-middle">
+                    <td class="border p-2 text-center serial">
+                      {{ $index + 1 }}
+                    </td>
+  
+                    <td class="border p-2 name">
+                      {{ ucwords($location->name) }}
+                    </td>
+  
+                    <td class="border p-2 city">
+                      {{ ucwords($location->city) }}
+                    </td>
+  
+                    <td class="border p-2 text-center text-sm w-40 actions">
+                      <a href="{{ route('admin.location.edit', $location) }}" class="btn-green py-1 px-2 rounded-sm">
+                        <i class="fa fa-pencil"></i>
+                      </a>
+  
+                      <a href="{{ route('admin.location.edit', $location) }}" 
+                        onclick="return confirm('Are you sure to delete this location?');"
+                        class="btn-red py-1 px-2 rounded-sm ml-1">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
           </div>
         </div>
 

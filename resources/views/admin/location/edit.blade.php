@@ -30,7 +30,7 @@
 
         <div class="w-full -mx-5 sm:-mx-6">
           <div class="edit-location-area w-2/4 px-5 sm:px-6">
-            <form action="{{ route('admin.location.edit') }}" method="POST"
+            <form action="{{ route('admin.location.edit', $location) }}" method="POST"
                   class="location-form edit w-full">
               @csrf
 

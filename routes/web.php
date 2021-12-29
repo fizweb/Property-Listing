@@ -39,12 +39,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
 // ADMIN ROUTES
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'admin'], function(){
   Route::get('/dashboard', [DashboardController::class, 'DashboardIndex'])->name('admin.dashboard');
-  Route::get('/properties', [DashboardController::class, 'PropertiesAll'])->name('admin.property.index');
-  Route::get('/property/add-new', [DashboardController::class, 'PropertyNewForm'])->name('admin.property.new');
-  Route::post('/property/add-new', [DashboardController::class, 'PropertyNewStore'])->name('admin.property.new');
-  Route::get('/property/{property}/edit', [DashboardController::class, 'PropertySingleEdit'])->name('admin.property.edit');
-  Route::post('/property/{property}/edit', [DashboardController::class, 'PropertySingleUpdate'])->name('admin.property.edit');
-  Route::get('/property/{property}/delete', [DashboardController::class, 'PropertySingleDelete'])->name('admin.property.delete');
+  Route::get('/properties', [PropertyController::class, 'admin_index'])->name('admin.property.index');
+  Route::get('/property/add-new', [PropertyController::class, 'create'])->name('admin.property.new');
+  Route::post('/property/add-new', [PropertyController::class, 'store'])->name('admin.property.new');
+  Route::get('/property/{property}/edit', [PropertyController::class, 'edit'])->name('admin.property.edit');
+  Route::post('/property/{property}/edit', [PropertyController::class, 'update'])->name('admin.property.edit');
+  Route::get('/property/{property}/delete', [PropertyController::class, 'destroy'])->name('admin.property.delete');
+  
+  Route::get('/property/{property_id}/featured-image/delete', [PropertyController::class, 'Delete_Featured_Media'])->name('admin.property.featured-Media.delete');
+  Route::get('/property/gallery/{gallery_id}/{property_id}/{media_id}/delete', [PropertyController::class, 'Delete_Property_Gallery'])->name('admin.property.gallery.delete');
   
   Route::get('/location/add-new', [LocationController::class, 'LocationNewForm'])->name('admin.location.new');
   Route::post('/location/add-new', [LocationController::class, 'LocationNewStore'])->name('admin.location.new');

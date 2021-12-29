@@ -17,7 +17,7 @@ class CreateLocationsTable extends Migration
       $table->id();
       $table->string('name');
       $table->string('city');
-
+      
       $table->timestamps();
     });
   }
