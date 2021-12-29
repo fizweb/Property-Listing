@@ -16,7 +16,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a, i, span { display: inline-block; }
-a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
+a, ::before, ::after { transition: 0.3s; }
+/* a:hover, ::before:hover, ::after:hover { transition: 0.3s; } */
 
 .color-base-1 { color: #332B22; }
 .bg-base-1 { background-color: #332B22; }
@@ -218,7 +219,8 @@ textarea.is-invalid:focus {
 }
 
 .bg-overlay {
-  @apply absolute left-0 top-0 w-full h-full bg-gray-800 transition opacity-0 z-20
+  transition: 0.3s;
+  @apply absolute left-0 top-0 w-full h-full bg-gray-800 opacity-0 z-20
 }
 
 
@@ -338,7 +340,11 @@ input:focus {
 
 /* Property-Add-Edit-Form */
 
-.property-form .bg-img:hover .bg-overlay {
+.bg-overlay,
+.property-form .bg-img a {
+  visibility: hidden;
+}
+.bg-img:hover .bg-overlay {
   @apply opacity-50 visible
 }
 .property-form .bg-img:hover a {
