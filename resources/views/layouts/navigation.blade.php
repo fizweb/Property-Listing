@@ -19,6 +19,10 @@
           <x-nav-link :href="route('admin.property.index')" :active="request()->routeIs('admin.property.index') || request()->routeIs('admin.property.new') || request()->routeIs('admin.property.edit')">
             {{ __('Properties') }}
           </x-nav-link>
+
+          <x-nav-link :href="route('admin.location.new')" :active="request()->routeIs('admin.location.new') || request()->routeIs('admin.location.edit')">
+            {{ __('Locations') }}
+          </x-nav-link>
         </div>
       </div>
 

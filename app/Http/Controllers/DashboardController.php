@@ -174,7 +174,7 @@ class DashboardController extends Controller
   public function PropertySingleEdit( Property $property, Request $request )
   {
     if( ! $property ){
-      return back()->with('error', 'Property not found!');
+      return back()->with('error', 'The property not found!');
     }
     
     $locations = Location::orderBy('name', 'asc')->get()->all();
@@ -190,7 +190,7 @@ class DashboardController extends Controller
   public function PropertySingleUpdate( Property $property, Request $request )
   {
     if( ! $property ){
-      return back()->with('error', 'Property not found!');
+      return back()->with('error', 'The property not found!');
     }
     
     $validator = Validator::make( $request->all(), [
@@ -322,7 +322,7 @@ class DashboardController extends Controller
   public function PropertySingleDelete( Property $property, Request $request )
   {
     if( ! $property ){
-      return back()->with('error', 'Property not found!');
+      return back()->with('error', 'The property not found!');
     }
 
     $property_title = $property->title;

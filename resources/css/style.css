@@ -33,6 +33,10 @@ a:hover, ::before:hover, ::after:hover { transition: 0.3s; }
   @apply text-base border rounded py-2 px-5
 }
 
+.btn-sm {
+  @apply text-sm leading-none border rounded py-0.5 px-1.5
+}
+
 .btn-gray {
   @apply bg-gray-800 text-white border-gray-800
 }
@@ -209,6 +213,10 @@ textarea.is-invalid:focus {
   @apply bg-cover bg-center bg-gray-300 border border-gray-400 rounded
 }
 
+.bg-overlay {
+  @apply absolute left-0 top-0 w-full h-full bg-gray-800 transition opacity-0 z-20
+}
+
 
 #property-searchForm select option { font-size: 16px !important;padding-left: 20px; }
 
@@ -320,6 +328,17 @@ input:focus {
 .slick-next.slick-arrow {
   left: auto;
   right: 12px;
+}
+
+
+
+/* Property-Add-Edit-Form */
+
+.property-form .bg-img:hover .bg-overlay {
+  @apply opacity-50 visible
+}
+.property-form .bg-img:hover a {
+  @apply opacity-100 visible
 }
 
 

@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <div class="flex justify-between items-center -mx-6">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+      <h2 class="font-semibold text-xl text-red-600 leading-tight">
         {{ __('Edit Property') }}
       </h2>
 
@@ -279,7 +279,7 @@
             </div>
 
             {{-- Featured-Media & Gallery-Media --}}
-            <div class="md:w-2/4 px-5 sm:px-6 self-start">
+            <div class="md:w-2/4 px-5 sm:px-6 self-start featured-and-gallery-media">
               <div class="flex flex-wrap justify-between -mx-5 sm:-mx-6">
                 {{-- Featured-Media --}}
                 <div class="md:w-2/4 px-5 sm:px-6">
@@ -300,9 +300,10 @@
                   {{-- Show-Featured-Media --}}
                   <div class="mb-7">
                     <div style="background-image: url('{{ asset($property->featured_media) }}')" class="bg-img h-40 relative {{ $property->featured_media ? 'cursor-pointer' : '' }}">
+                      <div class="bg-overlay"></div>
                       <a href="#" 
                       onclick="return confirm('Are you sure to delete featured-media?');"
-                      class="delete-featured-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded">
+                      class="delete-featured-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded transition opacity-0 z-30">
                         <i class="fa fa-close"></i>
                       </a>
                     </div>
@@ -333,9 +334,10 @@
                           @foreach ( $gallery->medias as $media )
                             <div class="w-2/4 px-1 mb-2">
                               <div style="background-image: url('{{ $media->storage_type == 'local' ? asset($media->url) : $media->url }}')" class="bg-img h-20 relative {{ $media->url ? 'cursor-pointer' : '' }}">
+                                <div class="bg-overlay"></div>
                                 <a href="#" 
                                 onclick="return confirm('Are you sure to cancel this media?');"
-                                class="delete-featured-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded">
+                                class="delete-featured-media btn-red absolute top-0.5 right-0.5 pt-0.5 pb-1 px-1.5 text-2xl leading-none rounded transition opacity-0 z-30">
                                   <i class="fa fa-close"></i>
                                 </a>
                               </div>

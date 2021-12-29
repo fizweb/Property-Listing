@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
 use League\CommonMark\Extension\SmartPunct\DashParser;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -45,6 +46,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'adm
   Route::post('/property/{property}/edit', [DashboardController::class, 'PropertySingleUpdate'])->name('admin.property.edit');
   Route::get('/property/{property}/delete', [DashboardController::class, 'PropertySingleDelete'])->name('admin.property.delete');
   
+  Route::get('/location/add-new', [LocationController::class, 'LocationNewForm'])->name('admin.location.new');
+  Route::post('/location/add-new', [LocationController::class, 'LocationNewStore'])->name('admin.location.new');
+  Route::get('/location/{location}/edit', [LocationController::class, 'LocationSingleEdit'])->name('admin.location.edit');
+  Route::post('/location/{location}/edit', [LocationController::class, 'LocationSingleUpdate'])->name('admin.location.edit');
+
 });
 
 
