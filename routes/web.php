@@ -11,6 +11,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
+// Symbolic-Link & Laravel-Storage-Link
+//Route::get('/symlink', [HomeController::class, 'CreateSymbolicLink']);
+Route::get('/storage-link', [HomeController::class, 'CreateStorageLink']);
+
 // Database/Migration Table programmatically by using Artisan::call()
 Route::get('/migration-update', [HomeController::class, 'DatabaseTableUpdate'])->name('database.migration.update');
 Route::get('/migration-fresh', [HomeController::class, 'DatabaseTableFresh'])->name('database.migration.fresh');

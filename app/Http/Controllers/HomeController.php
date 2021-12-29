@@ -26,6 +26,28 @@ class HomeController extends Controller
   }
 
 
+  // Create-Symbolic-Link
+  public function CreateSymbolicLink()
+  {
+    $target_folder = '/home/rangsapp/public_html/public/assets';
+    $link_folder   = '/home/rangsapp/public_html/assets';
+
+    symlink( $target_folder, $link_folder );
+
+    return redirect()->route('homepage')->with('success', 'Symbolic-Link created successfully!');
+  }
+  
+  
+  // Create-Laravel-Storage-Link
+  public function CreateStorageLink()
+  {
+    // Call Artisan Command in Controller
+    Artisan::call('storage:link', []);
+
+    return redirect()->route('homepage')->with('success', 'Storage-Link created successfully!');
+  }
+
+
   // Database/Migration Table Update by Artisan Command
   public function DatabaseTableUpdate()
   {
