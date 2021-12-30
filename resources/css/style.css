@@ -180,10 +180,6 @@ label.required > span:before {
   @apply w-full block
 }
 
-.is-invalid {
-  border: 1px solid #DC3545 !important;
-}
-
 select,
 input[type="file"] {
   @apply cursor-pointer
@@ -203,6 +199,7 @@ textarea.text-field-full {
   @apply h-auto
 }
 
+.is-invalid,
 input.required:focus,
 input.is-invalid:focus,
 select.required:focus,
@@ -340,16 +337,6 @@ input:focus {
 
 /* Property-Add-Edit-Form */
 
-/* .bg-overlay,
-.property-form .bg-img a {
-  visibility: hidden;
-} */
-/* .bg-img:hover .bg-overlay {
-  @apply opacity-50 visible
-}
-.property-form .bg-img:hover a {
-  @apply opacity-100 visible
-} */
 
 
 

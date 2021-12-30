@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Location;
 use App\Models\Property;
 use Illuminate\Http\Request;
@@ -22,6 +23,21 @@ class HomeController extends Controller
     return view('welcome', [
       'properties' => $properties,
       'locations'  => $locations,
+    ]);
+  }
+
+
+  // Show Single Static Page
+  public function SinglePage( $slug )
+  {
+    $page = Page::where('slug', $slug)->first();
+
+    if( ! $page ){
+      return back()->with('error', "The \"$slug\" page not found!");
+    }
+
+    return view('pages.single', [
+      'page' => $page,
     ]);
   }
 

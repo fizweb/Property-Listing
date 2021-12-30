@@ -4,6 +4,12 @@
       <h2 class="font-semibold text-xl text-red-600 leading-tight">
         {{ __('Edit Location') }}
       </h2>
+
+      <div class="min-w-max">
+        <a href="{{ route('admin.location.new') }}" class="btn btn-gray ml-1">
+          Back
+        </a>
+      </div>
     </div>
   </x-slot>
 

@@ -16,8 +16,18 @@
         <li>
           <a href="{{ route('property.all.index') }}/?property_type=apartment" class="link text-white p-3">{{ __('Apartment') }}</a>
         </li>
-        <li><a href="{{ route('page.single', 'about-us') }}" class="link text-white p-3">{{ __('About Us') }}</a></li>
-        <li><a href="{{ route('page.single', 'contact-us') }}" class="link text-white p-3">{{ __('Contact Us') }}</a></li>
+
+        <?php $pages = \App\Models\Page::get()->all(); ?>
+        @foreach ( $pages as $page )
+          <li>
+            <a href="{{ route('page.single', $page->slug) }}" class="link text-white p-3">
+              {{ __(ucwords($page->title)) }}
+            </a>
+          </li>
+        @endforeach
+
+        {{-- <li><a href="{{ route('page.single', 'about-us') }}" class="link text-white p-3">{{ __('About Us') }}</a></li>
+        <li><a href="{{ route('page.single', 'contact-us') }}" class="link text-white p-3">{{ __('Contact Us') }}</a></li> --}}
       </ul>
     </div>
 

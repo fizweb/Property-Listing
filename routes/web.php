@@ -2,10 +2,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\DashboardController;
 use League\CommonMark\Extension\SmartPunct\DashParser;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -34,14 +35,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
   Route::post('/property-inquiry/{property}', [ContactController::class, 'propertyInquiry'])->name('property.single.inquiry');
 
   
-  Route::get('/page/{slug}', [PageController::class, 'single'])->name('page.single');
+  Route::get('/page/{slug}', [HomeController::class, 'SinglePage'])->name('page.single');
 
 });
 
 
 
 /** ADMIN ROUTES - ADMIN ROUTES - ADMIN ROUTES **/
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'admin'], function(){
+// Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace' => 'admin'], function(){
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
   Route::get('/dashboard', [DashboardController::class, 'DashboardIndex'])->name('admin.dashboard');
   Route::get('/properties', [PropertyController::class, 'admin_index'])->name('admin.property.index');
   Route::get('/property/add-new', [PropertyController::class, 'create'])->name('admin.property.new');
@@ -59,8 +61,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'adm
   Route::post('/location/{location}/edit', [LocationController::class, 'update'])->name('admin.location.edit');
   Route::get('/location/{location}/delete', [LocationController::class, 'destroy'])->name('admin.location.delete');
 
-});
+  // static pages resource routes
+  Route::resource('dashboard-page', PageController::class);
+  // user resource routes
+  Route::resource('dashboard-user', UserController::class);
 
+
+});
 
 
 

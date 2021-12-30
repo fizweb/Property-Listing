@@ -23,6 +23,14 @@
           <x-nav-link :href="route('admin.location.new')" :active="request()->routeIs('admin.location.new') || request()->routeIs('admin.location.edit')">
             {{ __('Locations') }}
           </x-nav-link>
+
+          <x-nav-link :href="route('dashboard-page.index')" :active="request()->routeIs('dashboard-page.index') || request()->routeIs('dashboard-page.create') || request()->routeIs('dashboard-page.edit')">
+            {{ __('Pages') }}
+          </x-nav-link>
+
+          <x-nav-link :href="route('dashboard-user.index')" :active="request()->routeIs('dashboard-user.index') || request()->routeIs('dashboard-user.create') || request()->routeIs('dashboard-user.edit')">
+            {{ __('Users') }}
+          </x-nav-link>
         </div>
       </div>
 
