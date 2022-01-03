@@ -34,6 +34,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
   Route::get('/property/single/{property}/show', [PropertyController::class, 'show'])->name('property.single.show');
   Route::post('/property-inquiry/{property}', [ContactController::class, 'propertyInquiry'])->name('property.single.inquiry');
 
+  Route::get('/currency/{code}', [HomeController::class, 'CurrencyChange'])->name('currency.change');
+
   
   Route::get('/page/{slug}', [HomeController::class, 'SinglePage'])->name('page.single');
 

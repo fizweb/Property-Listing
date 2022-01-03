@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -38,16 +39,16 @@ class LocationController extends Controller
     
     $locationCreated = Location::create( $newLocationData );
 
-    return back()->with('success', 'New location added successfully!');
+    Flasher::addSuccess("New location added successfully!");
+
+    return back();
   }
 
   
   // Edit Location Form
   public function edit( Location $location )
   {
-    if( ! $location ){
-      return back()->with('error', 'The location not found!');
-    }
+    if( ! $location ) Flasher::addError("The location not found!"); return back();
 
     return view('admin.location.edit', [
       'location' => $location,
@@ -58,9 +59,7 @@ class LocationController extends Controller
   // Update Location
   public function update( Location $location, Request $request )
   {
-    if( ! $location ){
-      return back()->with('error', 'The location not found!');
-    }
+    if( ! $location ) Flasher::addError("The location not found!"); return back();
 
     $validator = Validator::make( $request->all(), [
       'name'  => [ 'required', 'string', 'max:191' ],
@@ -77,16 +76,15 @@ class LocationController extends Controller
     
     $locationUpdated = $location->update( $locationUpdateData );
 
-    return redirect()->route('admin.location.new')
-      ->with('success', "The location \"$location->name\" updated successfully!");
+    Flasher::addSuccess("The location ($location->name) updated successfully!");
+
+    return redirect()->route('admin.location.new');
   }
 
 
   public function destroy( Location $location, Request $request )
   {
-    if( ! $location ){
-      return back()->with('error', 'The location not found!');
-    }
+    if( ! $location ) Flasher::addError("The location not found!"); return back();
 
     foreach( $location->properties as $property ){
       $property->update([ 'location_id' => null ]);
@@ -94,7 +92,9 @@ class LocationController extends Controller
 
     $location->delete();
 
-    return back()->with('success', "The location \"$location->name\" deleted successfully!");
+    Flasher::addSuccess("The location ($location->name) deleted successfully!");
+
+    return back();
   }
 
 

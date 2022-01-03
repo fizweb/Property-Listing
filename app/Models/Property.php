@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Property extends Model
@@ -45,6 +47,26 @@ class Property extends Model
     'why_buy'     => 'array',
     'description' => 'array',
   ]; */
+
+
+  
+  public function dynamicPricing( $price )
+  {
+    $current_currency = Cookie::get('currency', 'bdt');
+
+    if( $current_currency == 'usd' ){
+      // base_currency = BDT
+      $get = Http::get("https://freecurrencyapi.net/api/v2/latest?apikey=edbee230-6ca4-11ec-b17b-a984d7e8ddca&base_currency=BDT");
+
+      if( $get->successful() ){
+        $usd = $price * $get->json()['data']['USD'];
+        return intval($usd) . ' USD';
+
+      }
+    } else{
+      return intval($price) . ' BDT';
+    }
+  }
 
 
 

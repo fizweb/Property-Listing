@@ -6,9 +6,12 @@ use App\Models\Media;
 use App\Models\Gallery;
 use App\Models\Location;
 use App\Models\Property;
+use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -161,7 +164,8 @@ class PropertyController extends Controller
       foreach( $request->file('gallery_media') as $key => $file ){
         if( ! $file->isValid() ){
           $file_no = $key + 1;
-          return back()->with('error', "The gallery-media no. {$file_no} has not valid.");
+          Flasher::addError("The gallery-media no. {$file_no} has not valid.");
+          return back();
         }
       }
     }
@@ -171,7 +175,8 @@ class PropertyController extends Controller
     if( $request->hasfile('featured_media') ){
       $featured_file = $request->file('featured_media');
       if( ! $featured_file->isValid() ){
-        return back()->with('error', 'The featured-media has not valid!');
+        Flasher::addError("The featured-media has not valid!");
+        return back();
       }
       /* $table_status = DB::select("show table status like 'properties'");
       $current_id   = $table_status[0]->Auto_increment;
@@ -240,7 +245,9 @@ class PropertyController extends Controller
       }
     }
 
-    return back()->with('success', 'New property added successfully!');
+    Flasher::addSuccess("New property added successfully!");
+
+    return back();
   }
 
 
@@ -251,9 +258,7 @@ class PropertyController extends Controller
    */
   public function show( Property $property )
   {
-    if( ! $property ){
-      return back()->with('error', 'The property not found!');
-    }
+    if( ! $property ) return back()->with("The property not found!");
 
     return view('property.single', [
       'property' => $property,
@@ -268,9 +273,7 @@ class PropertyController extends Controller
    */
   public function edit( Property $property )
   {
-    if( ! $property ){
-      return back()->with('error', 'The property not found!');
-    }
+    if( ! $property ) Flasher::addError("The property not found!"); return back();
     
     $locations = Location::orderBy('name', 'asc')->get()->all();
 
@@ -289,9 +292,7 @@ class PropertyController extends Controller
    */
   public function update( Property $property, Request $request )
   {
-    if( ! $property ){
-      return back()->with('error', 'The property not found!');
-    }
+    if( ! $property ) Flasher::addError("The property not found!"); return back();
     
     $validator = Validator::make( $request->all(), [
       'title'            => [ 'required', 'string', 'max:191' ],
@@ -334,7 +335,8 @@ class PropertyController extends Controller
       foreach( $request->file('gallery_media') as $key => $file ){
         if( ! $file->isValid() ){
           $file_no = $key + 1;
-          return back()->with('error', "The gallery-media no. {$file_no} has not valid.");
+          Flasher::addError("The gallery-media no. {$file_no} has not valid.");
+          return back();
         }
       }
     }
@@ -344,7 +346,8 @@ class PropertyController extends Controller
     if( $request->hasfile('featured_media') ){
       $featured_file = $request->file('featured_media');
       if( ! $featured_file->isValid() ){
-        return back()->with('error', 'The featured-media has not valid!');
+        Flasher::addError("The featured-media has not valid!");
+        return back();
       }
 
       // Remove old featured-media
@@ -418,8 +421,9 @@ class PropertyController extends Controller
       }
     }
 
-    return redirect()->route('admin.property.index')
-      ->with('success', "The property \"$property->title\" updated successfully!");
+    Flasher::addSuccess("The property ($property->title) updated successfully!");
+
+    return redirect()->route('admin.property.index');
   }
 
 
@@ -430,9 +434,7 @@ class PropertyController extends Controller
    */
   public function destroy( Property $property )
   {
-    if( ! $property ){
-      return back()->with('error', 'The property not found!');
-    }
+    if( ! $property ) Flasher::addError("The property not found!"); return back();
 
     if( ! empty($property->featured_media) && Storage::disk('public')->exists( $property->featured_media ) ){
       $deleteMedia = Storage::disk('public')->delete( $property->featured_media );
@@ -442,7 +444,9 @@ class PropertyController extends Controller
 
     $property->delete();
 
-    return back()->with('success', "The property \"$property->title\" deleted successfully!");
+    Flasher::addSuccess("The property ($property->title) deleted successfully!");
+
+    return back();
   }
 
 
@@ -451,9 +455,7 @@ class PropertyController extends Controller
   {
     $property = Property::find($property_id);
 
-    if( ! $property ){
-      return back()->with('error', 'The property not found!');
-    }
+    if( ! $property ) Flasher::addError("The property not found!"); return back();
 
     if( ! empty($property->featured_media) && Storage::disk('public')->exists( $property->featured_media ) ){
       $deleteMedia = Storage::disk('public')->delete( $property->featured_media );
@@ -461,7 +463,9 @@ class PropertyController extends Controller
 
     $property->update([ 'featured_media' => null ]);
 
-    return back()->with('success', 'The property featured-media deleted successfully!');
+    Flasher::addSuccess("The property featured-media deleted successfully!");
+
+    return back();
   }
 
 
@@ -474,18 +478,23 @@ class PropertyController extends Controller
                     ->where('media_id', $media_id)->get()->first();
 
     if( ! $property ){
-      return back()->with('error', 'The property not found!');
+      Flasher::addError("The property not found!");
+      return back();
 
     } elseif( ! $gallery ){
-      return back()->with('error', 'The gallery not found!');
+      Flasher::addError("The gallery not found!");
+      return back();
 
     } elseif( $gallery->property_id != $property_id || $gallery->media_id != $media_id || ! $get_gallery || $get_gallery->id != $gallery->id ){
-      return back()->with('error', 'The gallery not matched with this property!');
+      Flasher::addError("The gallery not matched with this property!");
+      return back();
     }
 
     $gallery->delete();
 
-    return back()->with('success', 'The gallery-media detached from property successfully!');
+    Flasher::addSuccess("The gallery-media detached from property successfully!");
+
+    return back();
   }
 
 

@@ -16,7 +16,7 @@
         <li>
           <a href="{{ route('property.all.index') }}/?property_type=apartment" class="link text-white p-3">{{ __('Apartment') }}</a>
         </li>
-
+        
         <?php $pages = \App\Models\Page::get()->all(); ?>
         @foreach ( $pages as $page )
           <li>
@@ -31,7 +31,20 @@
       </ul>
     </div>
 
-    <div class="right translate-flags min-w-max">
+    <?php 
+      $currencyCode = request()->cookie('currency', 'bdt');
+      //$currencyCode = \Illuminate\Support\Facades\Cookie::get('currency', 'bdt');
+    ?>
+    <div class="right currency min-w-max">
+      <a href="{{ route('currency.change', 'bdt') }}" class="link {{$currencyCode == 'bdt' ? 'text-yellow-400' : 'text-white'}} text-sm">
+        BDT
+      </a>
+      <a href="{{ route('currency.change', 'usd') }}" class="link {{$currencyCode == 'usd' ? 'text-yellow-400' : 'text-white'}} text-sm ml-2">
+        USD
+      </a>
+    </div>
+
+    <div class="right translate-flags min-w-max ml-10">
       <a href="{{ LaravelLocalization::getLocalizedURL('bn') }}" class="flag mr-1">
         <img src="https://flagcdn.com/w20/bd.png" srcset="https://flagcdn.com/w40/bd.png 2x"
         width="20" alt="Bangladesh" />

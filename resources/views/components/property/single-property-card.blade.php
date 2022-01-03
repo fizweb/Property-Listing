@@ -11,7 +11,7 @@
         {{ $property->title }}
       </h3>
       <div class="text-3xl font-bold uppercase mb-5">
-        {{ __('USD') }} <span class="ml-1">{{ __($property->price) }}</span>
+        <span class="">{{ $property->dynamicPricing($property->price) }}</span>
       </div>
       <div class="item-meta mb-2">
         @if ( $property->bedrooms )

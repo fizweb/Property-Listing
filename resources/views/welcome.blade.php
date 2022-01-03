@@ -158,7 +158,7 @@
       <div class="block pt-28">
         <section class="latest-properties">
           <h2 class="section-title">Last added property</h2>
-
+          
           @if ( $properties )
             <div class="section-content flex flex-wrap -mx-2">
               @foreach ( $properties as $property )

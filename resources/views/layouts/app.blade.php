@@ -38,6 +38,8 @@
   {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
   <script src="{{ asset('js/app.js') }}"></script>
 
+  @flasher_render
+
   @yield('custom-script')
 </body>
 </html>

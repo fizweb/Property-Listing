@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ContactMailProcess;
 use App\Models\Contact;
 use App\Models\Property;
 use App\Mail\ContactMail;
@@ -15,9 +16,7 @@ class ContactController extends Controller
 
   public function propertyInquiry( Property $property, Request  $request )
   {
-    if( ! $property ){
-      return back()->with('error', 'Property not found!');
-    }
+    if( ! $property ) return back()->with("Property not found!");
 
     $validator = Validator::make( $request->all(), [
       'name'     => [ 'required', 'string', 'max:50' ],
@@ -42,10 +41,10 @@ class ContactController extends Controller
 
     $newContactAdded = Contact::create( $newContactData );
 
-    // Send mail to customer
-    Mail::send( new ContactMail( $newContactAdded, $property ) );
+    // Send mail to customer via queue
+    ContactMailProcess::dispatch( $newContactAdded, $property );
 
-    return back()->with('success', 'Your inquiry has been submitted successfully!');
+    return back()->with("success", "Your inquiry has been submitted successfully!");
   }
   
   

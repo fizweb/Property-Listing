@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Location;
 use App\Models\Property;
+use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-
+use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends Controller
 {
@@ -32,13 +33,20 @@ class HomeController extends Controller
   {
     $page = Page::where('slug', $slug)->first();
 
-    if( ! $page ){
-      return back()->with('error', "The \"$slug\" page not found!");
-    }
+    if( ! $page ) return back()->with("The ($slug) page not found!");
 
     return view('pages.single', [
       'page' => $page,
     ]);
+  }
+
+
+  // Change Currency
+  public function CurrencyChange( $code )
+  {
+    Cookie::queue('currency', $code, 3600);
+
+    return back();
   }
 
 
@@ -50,7 +58,9 @@ class HomeController extends Controller
 
     symlink( $target_folder, $link_folder );
 
-    return redirect()->route('homepage')->with('success', 'Symbolic-Link created successfully!');
+    Flasher::addSuccess("Symbolic-Link created successfully!");
+
+    return redirect()->route('homepage');
   }
   
   
@@ -60,7 +70,9 @@ class HomeController extends Controller
     // Call Artisan Command in Controller
     Artisan::call('storage:link', []);
 
-    return redirect()->route('homepage')->with('success', 'Storage-Link created successfully!');
+    Flasher::addSuccess("Storage-link created successfully!");
+
+    return redirect()->route('homepage');
   }
 
 
@@ -70,7 +82,9 @@ class HomeController extends Controller
     // Call Artisan Command in Controller
     Artisan::call('migrate', []);
 
-    return redirect()->route('homepage')->with('success', 'Migration updated successfully!');
+    Flasher::addSuccess("Migration updated successfully!");
+
+    return redirect()->route('homepage');
   }
     
 
@@ -80,7 +94,9 @@ class HomeController extends Controller
     // Call Artisan Command in Controller
     Artisan::call('migrate:fresh', []);
 
-    return redirect()->route('homepage')->with('success', 'Migration successfully!');
+    Flasher::addSuccess("Migration successfully!");
+
+    return redirect()->route('homepage');
   }
     
 
@@ -90,7 +106,9 @@ class HomeController extends Controller
     // Call Artisan Command in Controller
     Artisan::call('migrate:fresh --seed', []);
 
-    return redirect()->route('homepage')->with('success', 'Migration with dummy data successfully done!');
+    Flasher::addSuccess("Migration with dummy data successfully done!");
+
+    return redirect()->route('homepage');
   }
   
 
@@ -100,7 +118,9 @@ class HomeController extends Controller
     // Call Artisan Command in Controller
     Artisan::call('migrate:rollback', []);
 
-    return redirect()->route('homepage')->with('success', 'Migration rollbacked successfully!');
+    Flasher::addSuccess("Migration rollbacked successfully!");
+
+    return redirect()->route('homepage');
   }
   
 
@@ -110,7 +130,9 @@ class HomeController extends Controller
     // Call Artisan Command in Controller
     Artisan::call('db:seed', []);
 
-    return redirect()->route('homepage')->with('success', 'Dummy data inserted successfully!');
+    Flasher::addSuccess("Dummy data inserted successfully!");
+
+    return redirect()->route('homepage');
   }
 
 

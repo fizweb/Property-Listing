@@ -54,7 +54,7 @@
           <h3 class="text-lg mt-2">
             {{ __('Price') }}:
             <span class="text-red-800">
-              {{ __('USD') }} {{ $property->price ? number_format( $property->price, 0, '.', ',' ) : '5,000,000' }}
+              {{ $property->dynamicPricing($property->price) }}
             </span>
           </h3>
         </div>

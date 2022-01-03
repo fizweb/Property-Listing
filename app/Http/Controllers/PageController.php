@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Flasher\Laravel\Facade\Flasher;
+use Flasher\Prime\FlasherInterface;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -58,7 +60,9 @@ class PageController extends Controller
     
     $pageCreated = Page::create( $newPageData );
 
-    return back()->with('success', "New \"$request->title\" page added successfully!");
+    Flasher::addSuccess("New ($request->title) page added successfully!");
+
+    return back();
   }
 
 
@@ -82,7 +86,7 @@ class PageController extends Controller
   {
     $page = Page::find($id);
 
-    if( ! $page ) return back()->with('error', "The page not found!");
+    if( ! $page ) Flasher::addError("The page not found!"); return back();
 
     return view('admin.page.edit', [
       'page' => $page,
@@ -100,7 +104,7 @@ class PageController extends Controller
   {
     $page = Page::find($id);
 
-    if( ! $page ) return back()->with('error', "The page not found!");
+    if( ! $page ) Flasher::addError("The page not found!"); return back();
 
     $validator = Validator::make( $request->all(), [
       'title'   => [ 'required', 'string', 'max:191', "unique:pages,title,$id" ],
@@ -119,8 +123,9 @@ class PageController extends Controller
     
     $pageUpdated = $page->update( $updatePageData );
 
-    return redirect()->route('dashboard-page.index')
-      ->with('success', "The \"$page->title\" page updated successfully!");
+    Flasher::addSuccess("The ($page->title) page updated successfully!");
+
+    return redirect()->route('dashboard-page.index');
   }
 
 
@@ -133,10 +138,12 @@ class PageController extends Controller
   {
     $page = Page::find($id);
 
-    if( ! $page ) return back()->with('error', "The page not found!");
+    if( ! $page ) Flasher::addError("The page not found!"); return back();
 
     $page->delete();
 
-    return back()->with('success', "The \"$page->title\" page deleted successfully!");
+    Flasher::addSuccess("The ($page->title) page deleted successfully!");
+
+    return back();
   }
 }

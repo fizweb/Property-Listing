@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -58,7 +59,9 @@ class UserController extends Controller
     
     $userCreated = User::create( $newUserData );
 
-    return back()->with('success', "New user for \"$request->name\" created successfully!");
+    Flasher::addSuccess("New user for ($request->name) created successfully!");
+
+    return back();
   }
 
 
@@ -82,7 +85,7 @@ class UserController extends Controller
   {
     $user = User::find($id);
 
-    if( ! $user ) return back()->with('error', "The user not found!");
+    if( ! $user ) Flasher::addError("The user not found!"); return back();
 
     return view('admin.user.edit', [
       'user' => $user,
@@ -100,7 +103,7 @@ class UserController extends Controller
   {
     $user = User::find($id);
 
-    if( ! $user ) return back()->with('error', "The user not found!");
+    if( ! $user ) Flasher::addError("The user not found!"); return back();
 
     $validator = Validator::make( $request->all(), [
       'name'      => [ 'required', 'string', 'max:191' ],
@@ -120,8 +123,9 @@ class UserController extends Controller
     
     $userUpdated = $user->update( $editUserData );
 
-    return redirect()->route('dashboard-user.index')
-      ->with('success', "The user for \"$user->name\" updated successfully!");
+    Flasher::addSuccess("The user for ($user->name) updated successfully!");
+
+    return redirect()->route('dashboard-user.index');
   }
 
 
@@ -134,11 +138,13 @@ class UserController extends Controller
   {
     $user = User::find($id);
 
-    if( ! $user ) return back()->with('error', "The user not found!");
+    if( ! $user ) Flasher::addError("The user not found!"); return back();
 
     $user->delete();
 
-    return back()->with('success', "The user \"$user->name\" deleted successfully!");
+    Flasher::addSuccess("The user ($user->name) deleted successfully!");
+
+    return back();
   }
 
 }
