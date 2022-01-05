@@ -52,17 +52,20 @@ class Property extends Model
   
   public function dynamicPricing( $price )
   {
+    // base_currency = BDT
+    $get_price = Http::get("https://freecurrencyapi.net/api/v2/latest?apikey=edbee230-6ca4-11ec-b17b-a984d7e8ddca&base_currency=BDT");
+
     $current_currency = Cookie::get('currency', 'bdt');
 
-    if( $current_currency == 'usd' ){
-      // base_currency = BDT
-      $get = Http::get("https://freecurrencyapi.net/api/v2/latest?apikey=edbee230-6ca4-11ec-b17b-a984d7e8ddca&base_currency=BDT");
-
-      if( $get->successful() ){
-        $usd = $price * $get->json()['data']['USD'];
+    if( $get_price->successful() ){
+      if( $current_currency == 'usd' ){
+        $usd = $price * $get_price->json()['data']['USD'];
         return intval($usd) . ' USD';
 
+      } else{
+        return intval($price) . ' BDT';
       }
+
     } else{
       return intval($price) . ' BDT';
     }
