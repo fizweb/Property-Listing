@@ -13,7 +13,15 @@ import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
 
+// Icons
+import feather from 'feather-icons/dist/feather.min';
+feather.replace();
+
+// Carousel
 require('./slick.min');
-require('./magnific-popup.min');
+
+// Lightbox for Image - Map - Video
+require('lity/dist/lity.min');
+// require('./magnific-popup.min');
 
 require('./main');

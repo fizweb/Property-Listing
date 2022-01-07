@@ -81,17 +81,20 @@
                   <td class="border p-2 text-center text-sm w-40 actions">
                     <a href="{{ route('property.single.show', $property) }}" target="blank"
                       class="btn-blue py-1 px-2 rounded-sm">
-                      <i class="fa fa-eye"></i>
+                      {{-- <i class="fa fa-eye"></i> --}}
+                      <i class="w-4 h-4 mb-1" data-feather="eye"></i>
                     </a>
 
                     <a href="{{ route('admin.property.edit', $property) }}" class="btn-green py-1 px-2 rounded-sm ml-1">
-                      <i class="fa fa-pencil"></i>
+                      {{-- <i class="fa fa-pencil"></i> --}}
+                      <i class="w-4 h-4 mb-1" data-feather="edit-3"></i>
                     </a>
 
                     <a href="{{ route('admin.property.delete', $property) }}" 
                       onclick="return confirm('Are you sure to delete this property?');"
                       class="btn-red py-1 px-2 rounded-sm ml-1">
-                      <i class="fa fa-trash"></i>
+                      {{-- <i class="fa fa-trash"></i> --}}
+                      <i class="w-4 h-4 mb-1" data-feather="trash-2"></i>
                     </a>
                   </td>
                 </tr>

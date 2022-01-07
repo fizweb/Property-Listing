@@ -24,7 +24,7 @@ module.exports = {
       // Min-Width
       '2xl': '1536px',
       'xl': '1280px',
-      'lg': '1024px',
+      'lg': '992px',
       'md': '768px',
       'sm': '640px',
       'xs': {'max': '639.98px'},
@@ -32,14 +32,14 @@ module.exports = {
       // Max-Width
       /*'xl': {'max': '1535.98px'},
       'lg': {'max': '1279.98px'},
-      'md': {'max': '1023.98px'},
+      'md': {'max': '991.98px'},
       'sm': {'max': '767.98px'},
       'xs': {'max': '639.98px'},*/
       
       /*'2xl': {'min': '1536px'},
       'xl': {'min': '1280px', 'max': '1535.98px'},
-      'lg': {'min': '1024px', 'max': '1279.98px'},
-      'md': {'min': '768px', 'max': '1023.98px'},
+      'lg': {'min': '992px', 'max': '1279.98px'},
+      'md': {'min': '768px', 'max': '991.98px'},
       'sm': {'min': '640px', 'max': '767.98px'},
       'xs': {'max': '639.98px'},*/
       

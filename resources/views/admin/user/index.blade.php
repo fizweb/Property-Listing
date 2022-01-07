@@ -70,17 +70,20 @@
 
                   <td class="border p-2 text-center text-sm w-40 actions">
                     <a href="{{ route('dashboard-user.show', $user->id) }}" class="btn-blue py-1 px-2 rounded-sm">
-                      <i class="fa fa-eye"></i>
+                      {{-- <i class="fa fa-eye"></i> --}}
+                      <i class="w-4 h-4 mb-1" data-feather="eye"></i>
                     </a>
 
                     <a href="{{ route('dashboard-user.edit', $user->id) }}" class="btn-green py-1 px-2 rounded-sm ml-1">
-                      <i class="fa fa-pencil"></i>
+                      {{-- <i class="fa fa-pencil"></i> --}}
+                      <i class="w-4 h-4 mb-1" data-feather="edit-3"></i>
                     </a>
 
                     {{-- <a href="{{ route('dashboard-user.destroy', $user->id) }}" 
                       onclick="return confirm('Are you sure to delete this user?');"
                       class="btn-red py-1 px-2 rounded-sm ml-1">
                       <i class="fa fa-trash"></i>
+                      <i class="w-4 h-4 mb-1" data-feather="trash-2"></i>
                     </a> --}}
 
                     <form action="{{ route('dashboard-user.destroy', $user->id) }}"   
@@ -88,7 +91,8 @@
                       @csrf @method('DELETE')
                       <button type="submit" class="btn-red py-1 px-2 rounded-sm ml-1"
                         onclick="return confirm('Are you sure to delete this user?');">
-                        <i class="fa fa-trash"></i>
+                        {{-- <i class="fa fa-trash"></i> --}}
+                        <i class="w-4 h-4 mb-1" data-feather="trash-2"></i>
                       </button>
                     </form>
                   </td>

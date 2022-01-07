@@ -30,7 +30,10 @@
     
     {{-- Mouse Scroll-To-Top --}}
     <div id="scroll-top" class="hidden fixed w-12 h-12 right-0 bottom-0 bg-red-600 text-white text-3xl text-center leading-normal rounded-full mr-5 mb-5 cursor-pointer transition-all">
-      <span><i class="fa fa-angle-up"></i></span>
+      <span>
+        {{-- <i class="fa fa-angle-up"></i> --}}
+        <i class="mb-2" data-feather="chevron-up"></i>
+      </span>
     </div>
   </div>
 

@@ -43,9 +43,9 @@
 
 
     // Embeded Video Play
-    $('.video-play').magnificPopup({
+    /* $('.video-play').magnificPopup({
       type: 'video'
-    });
+    }); */
 
 
     // Single-Property Slider

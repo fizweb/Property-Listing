@@ -24,10 +24,11 @@
 */
 /* @import 'font-awesome'; */
 /* @import '~font-awesome'; */
-@import './font-awesome.min.css';
+/* @import './font-awesome.min.css'; */
 @import './slick.min.css';
 @import './slick-theme.css';
-@import './magnific-popup.css';
+@import 'lity/dist/lity.min';
+/* @import './magnific-popup.css'; */
 
 
 /*

@@ -16,21 +16,30 @@
       <div class="item-meta mb-2">
         @if ( $property->bedrooms )
           <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-            <i class="fa fa-home mr-1"></i>
+            <span class="icon">
+              {{-- <i class="fa fa-home mr-1"></i> --}}
+              <i class="w-4 h-4 mr-1 mb-1.5" data-feather="home"></i>
+            </span>
             {{ __($property->bedrooms) }} {{ __('Bedrooms') }}
           </span>
         @endif
 
         @if ( $property->bathrooms )
           <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-            <i class="fa fa-home mr-1"></i>
+            <span class="icon">
+              {{-- <i class="fa fa-home mr-1"></i> --}}
+              <i class="w-4 h-4 mr-1 mb-1.5" data-feather="home"></i>
+            </span>
             {{ __($property->bathrooms) }} {{ __('Bathrooms') }}
           </span>
         @endif
 
         @if ( $property->gross_smt )
           <span class="text-gray-400 text-base leading-7 border-2 border-gray-100 rounded-2xl mr-1 mb-2 px-2">
-            <i class="fa fa-home mr-1"></i>
+            <span class="icon">
+              {{-- <i class="fa fa-home mr-1"></i> --}}
+              <i class="w-4 h-4 mr-1 mb-1.5" data-feather="home"></i>
+            </span>
             {{ __($property->gross_smt) }}
             <span>mt<sup class="align-middle">2</sup></span>
           </span>
