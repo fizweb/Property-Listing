@@ -62,8 +62,8 @@
     <section class="site-footer mt-24 py-8 border-t-2 border-gray-400">
       <div class="flex flex-wrap -mx-4">
         <div class="site-copyright flex-1 px-4">
-          <div class="flex flex-wrap content-between h-full">
-            <a href="/" class="left logo footer min-w-max">
+          <div class="flex flex-wrap content-between justify-center md:justify-start h-full">
+            <a href="/" class="left logo footer min-w-max mb-8 md:mb-0">
               <img width="100" src="{{ asset('assets/img/logo/logo-dark.png') }}" alt="" class="site-logo" />
               {{-- <h2 class="font-bold text-2xl">Brand Logo</h2> --}}
             </a>

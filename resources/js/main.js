@@ -29,6 +29,14 @@
     });
 
 
+    // Mobile-Menu Show-Hide
+    $("#menu-hamburger").on("click", function(){
+      $("#navbar-menu").toggleClass("show");
+      $(this).children(".menu-icon").toggleClass("hide");
+      $(this).children(".menu-close").toggleClass("show");
+    });
+
+
     // remove alert element on click
     $(".alert-dismissible[role='alert']").each(function(){
       $(this).on('click', function(){

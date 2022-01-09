@@ -3,14 +3,16 @@
   <div class="bg-white shadow-md border-b-2 border-gray-300 py-2 mt-22">
     <div class="container mx-auto">
       <ul class="flex items-center">
-        <li>
+        <li class="hidden md:block">
           <a class="text-3xl text-red-800" href="{{ url('/') }}">
-            <i class="fa fa-home"></i>
+            {{-- <i class="fa fa-home"></i> --}}
+            <i data-feather="home"></i>
           </a>
         </li>
 
-        <li class="mx-3">
-          <i class="fa fa-angle-right"></i>
+        <li class="hidden md:block mx-3">
+          {{-- <i class="fa fa-angle-right"></i> --}}
+          <i data-feather="chevron-right"></i>
         </li>
 
         <li>
@@ -18,7 +20,8 @@
         </li>
 
         <li class="mx-3">
-          <i class="fa fa-angle-right"></i>
+          {{-- <i class="fa fa-angle-right"></i> --}}
+          <i data-feather="chevron-right"></i>
         </li>
 
         <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
@@ -46,7 +49,7 @@
   <div class="bg-white py-8">
     <div class="container mx-auto">
       <div class="flex justify-between">
-        <div class="w-8/12">
+        <div class="w-full md:w-8/12">
           <h2 class="text-3xl text-gray-600">
             {{ $property->title }}
           </h2>
@@ -59,7 +62,7 @@
           </h3>
         </div>
 
-        <div class="w-3/12">
+        <div class="w-3/12 hidden md:block">
           <ul class="flex justify-end">
             <li>
               <a class="flex flex-col justify-center items-center mx-2 border-2 border-gray-200 p-3 hover:border-red-400 duration-200"
@@ -90,96 +93,116 @@
 
   {{-- Single Property Content --}}
   <div class="container my-14">
-    <div class="flex justify-between mx-2">
+    <div class="flex flex-col md:flex-row justify-between md:mx-2">
 
       {{-- Left-Sided Content --}}
-      <div class="w-9/12 mx-2">
+      <div class="w-full md:w-9/12 md:mx-2">
         <div id="slider" class="">
           @include('property.slider', $property->gallery)
         </div>
 
         {{-- Overview --}}
         @if ( $property->overview )
-          <div class="flex justify-between items-center bg-white p-8 mt-10 shadow-sm">
-            <h4 class="text-lg w-2/12">Overview</h4>
-            <div class="border-l-2 border-gray-300 pl-5 ml-5 w-10/12 text-base">
+          <div class="flex flex-col md:flex-row justify-between items-center bg-white md:px-8 py-8 mt-10 shadow-sm">
+            <h4 class="md:w-2/12 text-lg mb-5 md:mb-0 pb-3 md:pb-0 border-b-2 md:border-b-0 border-gray-300">Overview</h4>
+            <div class="md:w-10/12 text-base text-center md:text-left md:pt-5 md:pl-5 md:ml-5 md:border-l-2 border-gray-300">
               <p>{{ $property->overview }}</p>
             </div>
           </div>
         @endif
 
         {{-- Property Featuers --}}
-        <div class="flex justify-between items-center bg-white p-8 mt-10 shadow-sm">
-          <h4 class="text-lg w-2/12">Property Features</h4>
-          <div class="ml-2 w-10/12 text-base flex justify-between">
-            <div class="flex-1 border-l-2 border-gray-300 ml-3 pl-3 self-center">
-              <ul>
-                @if ( $property->main_feature )
-                  <li class="flex flex-wrap items-center text-sm my-2">
-                    <i class="fa fa-home mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Type:</span>
-                    <span class="ml-2 font-bold">{{ ucwords($property->main_feature) }}</span>
-                  </li>
-                @endif
-                
-                @if ( $property->bedrooms )
-                  <li class="flex flex-wrap items-center text-sm my-2">
-                    <i class="fa fa-bed mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Bedrooms:</span>
-                    <span class="ml-2 font-bold">{{ $property->bedrooms }}</span>
-                  </li>
-                @endif
-              </ul>
-            </div>
+        <div class="flex flex-col md:flex-row md:justify-between items-center bg-white px-5 md:px-8 py-8 mt-10 shadow-sm">
+          <h4 class="md:w-2/12 text-lg mb-5 md:mb-0 pb-3 md:pb-0 border-b-2 md:border-b-0 border-gray-300">Property Features</h4>
+          <div class="w-full md:w-10/12 md:ml-2">
+            <div class="flex flex-col md:flex-row md:justify-between text-base">
+              <div class="flex-1 self-center w-full md:w-auto md:ml-3 md:pl-3 md:border-l-2 border-gray-300">
+                <ul class="flex md:block flex-row md:flex-col flex-wrap justify-between items-center">
+                  @if ( $property->main_feature )
+                    <li class="flex-1 w-1/2 md:w-full text-sm my-2">
+                      <div class="flex flex-wrap items-center">
+                        {{-- <i class="fa fa-home mr-2 text-red-400 w-5 text-center"></i> --}}
+                        <i data-feather="home" class="mr-2 text-red-400 w-5 text-center"></i>
+                        <span class="text-sm">Type:</span>
+                        <span class="ml-2 font-bold">{{ ucwords($property->main_feature) }}</span>
+                      </div>
+                    </li>
+                  @endif
+                  
+                  @if ( $property->bedrooms )
+                    <li class="flex-1 w-1/2 md:w-full text-sm my-2">
+                      <div class="flex flex-wrap items-center">
+                        {{-- <i class="fa fa-bed mr-2 text-red-400 w-5 text-center"></i> --}}
+                        <i data-feather="home" class="mr-2 text-red-400 w-5 text-center"></i>
+                        <span class="text-sm">Bedrooms:</span>
+                        <span class="ml-2 font-bold">{{ $property->bedrooms }}</span>
+                      </div>
+                    </li>
+                  @endif
+                </ul>
+              </div>
 
-            <div class="flex-1 border-l-2 border-gray-300 ml-3 pl-3 self-center">
-              <ul>
-                @if ( $property->bathrooms )
-                  <li class="flex flex-wrap items-center text-sm my-2">
-                    <i class="fa fa-shower mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Bathrooms:</span>
-                    <span class="ml-2 font-bold">{{ $property->bathrooms }}</span>
+              <div class="flex-1 self-center w-full md:w-auto md:ml-3 md:pl-3 md:border-l-2 border-gray-300">
+                <ul class="flex md:block flex-row md:flex-col flex-wrap justify-between items-center">
+                  @if ( $property->bathrooms )
+                    <li class="flex-1 w-1/2 md:w-full text-sm my-2">
+                      <div class="flex flex-wrap items-center">
+                        {{-- <i class="fa fa-shower mr-2 text-red-400 w-5 text-center"></i> --}}
+                        <i data-feather="home" class="mr-2 text-red-400 w-5 text-center"></i>
+                        <span class="text-sm">Bathrooms:</span>
+                        <span class="ml-2 font-bold">{{ $property->bathrooms }}</span>
+                      </div>
+                    </li>
+                  @endif
+                  
+                  <li class="flex-1 w-1/2 md:w-full text-sm my-2">
+                    <div class="flex flex-wrap items-center">
+                      {{-- <i class="fa fa-map-marker mr-2 text-red-400 w-5 text-center"></i> --}}
+                      <i data-feather="home" class="mr-2 text-red-400 w-5 text-center"></i>
+                      <span class="text-sm">Location:</span>
+                      <span class="ml-2 font-bold">{{ ucwords($property->location->name) }}</span>
+                    </div>
                   </li>
-                @endif
-                
-                <li class="flex flex-wrap items-center text-sm my-2">
-                  <i class="fa fa-map-marker mr-2 text-red-400 w-5 text-center"></i>
-                  <span class="text-sm">Location:</span>
-                  <span class="ml-2 font-bold">{{ ucwords($property->location->name) }}</span>
-                </li>
-              </ul>
-            </div>
+                </ul>
+              </div>
 
-            <div class="flex-1 border-l-2 border-gray-300 ml-3 pl-3 self-center">
-              <ul>
-                @if ( $property->gross_smt )
-                  <li class="flex flex-wrap items-center text-sm my-2">
-                    <i class="fa fa-gratipay mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Living space:</span>
-                    <span class="ml-2 font-bold">
-                      <span>{{ $property->gross_smt }}</span>
-                      <sup>sqm</sup>
-                    </span>
-                  </li>
-                @endif
-                
-                @if ( $property->pool )
-                  <li class="flex flex-wrap items-center text-sm my-2">
-                    <i class="fa fa-low-vision mr-2 text-red-400 w-5 text-center"></i>
-                    <span class="text-sm">Pool:</span>
-                    <span class="ml-2 font-bold">{{ ucwords($property->pool) }}</span>
-                  </li>
-                @endif
-              </ul>
+              <div class="flex-1 self-center w-full md:w-auto md:ml-3 md:pl-3 md:border-l-2 border-gray-300">
+                <ul class="flex md:block flex-row md:flex-col flex-wrap justify-between items-center">
+                  @if ( $property->gross_smt )
+                    <li class="flex-1 w-1/2 md:w-full text-sm my-2">
+                      <div class="flex flex-wrap items-center">
+                        {{-- <i class="fa fa-gratipay mr-2 text-red-400 w-5 text-center"></i> --}}
+                        <i data-feather="home" class="mr-2 text-red-400 w-5 text-center"></i>
+                        <span class="text-sm">Living space:</span>
+                        <span class="ml-2 font-bold">
+                          <span>{{ $property->gross_smt }}</span>
+                          <sup>sqm</sup>
+                        </span>
+                      </div>
+                    </li>
+                  @endif
+                  
+                  @if ( $property->pool )
+                    <li class="flex-1 w-1/2 md:w-full text-sm my-2">
+                      <div class="flex flex-wrap items-center">
+                        {{-- <i class="fa fa-low-vision mr-2 text-red-400 w-5 text-center"></i> --}}
+                        <i data-feather="home" class="mr-2 text-red-400 w-5 text-center"></i>
+                        <span class="text-sm">Pool:</span>
+                        <span class="ml-2 font-bold">{{ ucwords($property->pool) }}</span>
+                      </div>
+                    </li>
+                  @endif
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
         {{-- Reason to buy --}}
         @if ( $property->why_buy )
-          <div class="flex justify-between items-center bg-white p-8 mt-10 shadow-sm">
-            <h4 class="text-lg w-2/12">Why buy this Property</h4>
-            <div class="border-l-2 border-gray-300 pl-5 ml-5 w-10/12 text-base">
+          <div class="flex flex-col md:flex-row justify-between items-center bg-white px-5 md:px-8 py-8 mt-10 shadow-sm">
+            <h4 class="md:w-2/12 text-lg mb-5 md:mb-0 pb-3 md:pb-0 border-b-2 md:border-b-0 border-gray-300">Why buy this Property</h4>
+            <div class="md:w-10/12 text-base text-center md:text-left md:pt-5 md:pl-5 md:ml-5 md:border-l-2 border-gray-300">
               <p>{{ $property->why_buy }}</p>
 
               {{-- <ul>
@@ -193,7 +216,7 @@
 
         {{-- Description --}}
         @if ( $property->description )
-          <div class="bg-white p-8 mt-10 shadow-sm" id="description">
+          <div class="bg-white text-center md:text-right p-5 md:p-8 mt-10 shadow-sm" id="description">
             
             <p>{{ $property->description }}</p>
 
@@ -249,14 +272,14 @@
       {{-- End Left Side Content --}}
 
       {{-- Right-Sidebar --}}
-      <div class="w-3/12 mx-2">
+      <div class="w-full md:w-3/12 md:mx-2">
         <div class="border-2 border-red-800 px-5 py-3 text-center font-light text-base">
           <p>Subscribe to Property Listing for blogs/news/videos</p>
         </div>
 
         {{-- Property-Enquiry Form --}}
         <div class="px-4 py-5 text-left bg-gray-300 my-5">
-          <h1 class="text-3xl font-normal leading-none mb-5">
+          <h1 class="text-3xl font-normal text-center md:text-right leading-none mb-5">
             Enquire about this property
           </h1>
 

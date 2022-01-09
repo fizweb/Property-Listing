@@ -1,7 +1,7 @@
 /*
-* ===========================================================================================
-* Style-CSS
-* ===========================================================================================
+========================================================================================
+*** Style-CSS ***
+========================================================================================
 */
 
 /* body {
@@ -30,7 +30,8 @@ a, ::before, ::after { transition: 0.3s; }
 
 .mt-22 { margin-top: 5.5rem; }
 
-.feather {
+.feather:not(.hidden),
+.feather:not(.hide) {
   @apply inline-block
 }
 
@@ -225,6 +226,16 @@ textarea.is-invalid:focus {
 }
 
 
+
+#navbar-menu.show,
+.menu-close.show {
+  display: block;
+}
+.menu-icon.hide {
+  display: none;
+}
+
+
 #property-searchForm select option { font-size: 16px !important;padding-left: 20px; }
 
 .sidebar-search-form form div {
@@ -292,9 +303,8 @@ input:focus {
 
 /* Slick Controll */
 .single-item {
-  background-size: cover;
-  background-position: center;
-  height: 450px;
+  /* height: 450px; */
+  @apply h-60 bg-cover bg-center
 }
 
 .thumbSlider {

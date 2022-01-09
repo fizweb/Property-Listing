@@ -5,29 +5,29 @@
       {{-- <h2 class="font-bold text-2xl">Brand Logo</h2> --}}
     </a>
 
-    <div class="w-full hidden md:block">
-      <ul class="navbar-nav flex justify-center">
+    <div id="navbar-menu" class="w-full hidden md:block bg-gray-200 md:bg-transparent absolute md:relative left-0 top-20 md:top-0 -mt-2 md:-mt-0">
+      <ul class="navbar-nav md:flex justify-center py-5 md:py-0">
         <li>
-          <a href="{{ route('property.all.index') }}/?property_type=land" class="link text-white p-3">{{ __('Land') }}</a>
+          <a href="{{ route('property.all.index') }}/?property_type=land" class="link block md:inline-block color-base-1 md:text-white px-8 md:px-3 py-3">{{ __('Land') }}</a>
         </li>
         <li>
-          <a href="{{ route('property.all.index') }}/?property_type=villa" class="link text-white p-3">{{ __('Villa') }}</a>
+          <a href="{{ route('property.all.index') }}/?property_type=villa" class="link block md:inline-block color-base-1 md:text-white px-8 md:px-3 py-3">{{ __('Villa') }}</a>
         </li>
         <li>
-          <a href="{{ route('property.all.index') }}/?property_type=apartment" class="link text-white p-3">{{ __('Apartment') }}</a>
+          <a href="{{ route('property.all.index') }}/?property_type=apartment" class="link block md:inline-block color-base-1 md:text-white px-8 md:px-3 py-3">{{ __('Apartment') }}</a>
         </li>
         
         <?php $pages = \App\Models\Page::get()->all(); ?>
         @foreach ( $pages as $page )
           <li>
-            <a href="{{ route('page.single', $page->slug) }}" class="link text-white p-3">
+            <a href="{{ route('page.single', $page->slug) }}" class="link block md:inline-block color-base-1 md:text-white px-8 md:px-3 py-3">
               {{ __(ucwords($page->title)) }}
             </a>
           </li>
         @endforeach
 
-        {{-- <li><a href="{{ route('page.single', 'about-us') }}" class="link text-white p-3">{{ __('About Us') }}</a></li>
-        <li><a href="{{ route('page.single', 'contact-us') }}" class="link text-white p-3">{{ __('Contact Us') }}</a></li> --}}
+        {{-- <li><a href="{{ route('page.single', 'about-us') }}" class="link block md:inline-block color-base-1 md:text-white px-8 md:px-3 py-3">{{ __('About Us') }}</a></li>
+        <li><a href="{{ route('page.single', 'contact-us') }}" class="link block md:inline-block color-base-1 md:text-white px-8 md:px-3 py-3">{{ __('Contact Us') }}</a></li> --}}
       </ul>
     </div>
 
@@ -56,8 +56,11 @@
       </a>
     </div>
 
-    <div class="menu-hamburger inline-block md:hidden leading-none cursor-pointer px-1">
+    <div id="menu-hamburger" class="inline-block md:hidden leading-none cursor-pointer px-1">
       <i class="menu-icon" data-feather="menu"></i>
+      <span class="menu-close hidden">
+        <i class="" data-feather="x"></i>
+      </span>
     </div>
   </div>
 </header>
