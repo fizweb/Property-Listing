@@ -24,6 +24,22 @@ Route::get('/migration-rollback', [HomeController::class, 'DatabaseTableRollback
 Route::get('/db-seed', [HomeController::class, 'DatabaseSeed'])->name('database.seed');
 
 
+// Clear cache-config-&-session
+Route::get('/view-clear', [HomeController::class, 'ViewClear']);
+Route::get('/route-clear', [HomeController::class, 'RouteClear']);
+Route::get('/cache-clear', [HomeController::class, 'CacheClear']);
+Route::get('/config-clear', [HomeController::class, 'ConfigClear']);
+Route::get('/config-cache', [HomeController::class, 'ConfigCache']);
+
+/*
+https://property.com/view-clear
+https://property.com/route-clear
+https://property.com/cache-clear
+https://property.com/config-clear
+https://property.com/config-cache
+*/
+
+
 
 /** LOCALIZED ROUTES GROUP **/
 Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
